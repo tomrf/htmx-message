@@ -6,7 +6,8 @@
     "homepage": "http://github.com/tomrf/htmx-message",
     "license": "MIT",
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -14,7 +15,9 @@
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpmd/phpmd": "^2.12",
         "bmitch/churn-php": "^1.7",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "nyholm/psr7-server": "^1.0",
+        "nyholm/psr7": "^1.5"
     },
     "autoload": {
         "psr-4": {
@@ -40,7 +43,7 @@
             "phpmd src/ ansi .phpmd-ruleset.xml"
         ],
         "churn": [
-            "churn run src/"
+            "churn run src/ | tail -n +7"
         ],
         "test": [
             "@phpunit",
