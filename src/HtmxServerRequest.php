@@ -10,7 +10,7 @@ use Psr\Http\Message\UriInterface;
 
 class HtmxServerRequest implements ServerRequestInterface
 {
-    public function __construct(
+    final public function __construct(
         protected ServerRequestInterface $request,
     ) {
     }
@@ -118,6 +118,11 @@ class HtmxServerRequest implements ServerRequestInterface
         return new static($this->request->withMethod($method));
     }
 
+    /**
+     * @SuppressWarnings(PHPMD)
+     *
+     * @param bool $preserveHost
+     */
     public function withUri(UriInterface $uri, $preserveHost = false)
     {
         return new static($this->request->withUri($uri, $preserveHost));
@@ -129,31 +134,50 @@ class HtmxServerRequest implements ServerRequestInterface
     }
 
     // ServerRequestInterface
+
+    /**
+     * @return array<mixed>
+     */
     public function getServerParams()
     {
         return $this->request->getServerParams();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getCookieParams()
     {
         return $this->request->getCookieParams();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getQueryParams()
     {
         return $this->request->getQueryParams();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getUploadedFiles()
     {
         return $this->request->getUploadedFiles();
     }
 
+    /**
+     * @return null|array<mixed>|object
+     */
     public function getParsedBody()
     {
         return $this->request->getParsedBody();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getAttributes()
     {
         return $this->request->getAttributes();
@@ -164,21 +188,33 @@ class HtmxServerRequest implements ServerRequestInterface
         return $this->request->getAttribute($name, $default);
     }
 
+    /**
+     * @param null|array<mixed>|object $data
+     */
     public function withParsedBody($data)
     {
         return new static($this->request->withParsedBody($data));
     }
 
+    /**
+     * @param array<mixed> $uploadedFiles
+     */
     public function withUploadedFiles(array $uploadedFiles)
     {
         return new static($this->request->withUploadedFiles($uploadedFiles));
     }
 
+    /**
+     * @param array<mixed> $query
+     */
     public function withQueryParams(array $query)
     {
         return new static($this->request->withQueryParams($query));
     }
 
+    /**
+     * @param array<mixed> $cookies
+     */
     public function withCookieParams(array $cookies)
     {
         return new static($this->request->withCookieParams($cookies));
