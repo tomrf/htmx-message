@@ -136,7 +136,7 @@ public function getHxTrigger(): array
 ```php
 public function withHxTrigger(
     string $trigger,
-    mixed $argument =
+    mixed $argument = null
 ): static
 ```
 
@@ -145,7 +145,7 @@ public function withHxTrigger(
 ```php
 public function withAddedHxTrigger(
     string $trigger,
-    mixed $argument =
+    mixed $argument = null
 ): static
 ```
 
@@ -181,7 +181,7 @@ public function withHxTriggerAfterSettle(
 ```php
 public function withAddedHxTriggerAfterSettle(
     string $trigger,
-    mixed $argument =
+    mixed $argument = null
 ): static
 ```
 
@@ -208,7 +208,7 @@ public function getHxTriggerAfterSwap(): array
 ```php
 public function withHxTriggerAfterSwap(
     string $trigger,
-    mixed $argument =
+    mixed $argument = null
 ): static
 ```
 
@@ -217,7 +217,7 @@ public function withHxTriggerAfterSwap(
 ```php
 public function withAddedHxTriggerAfterSwap(
     string $trigger,
-    mixed $argument =
+    mixed $argument = null
 ): static
 ```
 
