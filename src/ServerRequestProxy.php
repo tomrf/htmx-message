@@ -30,7 +30,9 @@ class ServerRequestProxy implements ServerRequestInterface
     }
 
     // PSR-7 MessageInterface
-
+    /**
+     * @internal
+     */
     public function getBody()
     {
         return $this->request->getBody();
@@ -133,7 +135,9 @@ class ServerRequestProxy implements ServerRequestInterface
     }
 
     // PSR-7 RequestInterface
-
+    /**
+     * @internal
+     */
     public function getRequestTarget()
     {
         return $this->request->getRequestTarget();

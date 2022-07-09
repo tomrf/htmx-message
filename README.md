@@ -2,9 +2,11 @@
 
 [![PHP Version Require](http://poser.pugx.org/tomrf/htmx-message/require/php?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![Latest Stable Version](http://poser.pugx.org/tomrf/htmx-message/v?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![License](http://poser.pugx.org/tomrf/htmx-message/license?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message)
 
-:package_extra_intro
+PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for `htmx`
+with convenience methods for all special htmx headers (`HX-*`) in request and
+response objects.
 
-📔 [Go to documentation](#documentation)
+See [the 📔 documentation](#documentation) for quick overview of relevant methods.
 
 ## Installation
 Installation via composer:
@@ -13,9 +15,25 @@ Installation via composer:
 composer require tomrf/htmx-message
 ```
 
-## Usage
+## Usage example
 ```php
-:package_extra_example
+$request = new HtmxRequest($request);      // object implementing PSR-7 `ServerRequestInterface`
+
+if ($request->isHxRequest() && $request->isHxBoosted()) {
+    $layout = 'ajax.layout';
+}
+
+[...]
+
+$response = new HtmxResponse($response);   // object implementing PSR-7 `ResponseInterface`
+
+$response = $response->withHxTrigger('aSimpleTrigger')
+    ->withAddedHxTrigger('triggerWithParams', ['arg' => true, 'arg2' => 7])
+    ->withTriggerAfterSwap('afterSwap', time());
+    ->withHxPush($newUrl);
+
+// Emit $response as normal
+[...]
 ```
 
 ## Testing
@@ -72,8 +90,6 @@ See [LICENSE](LICENSE) for more information.
    - [getHxTriggerName](#gethxtriggername)
    - [getHxTarget](#gethxtarget)
    - [getHxPrompt](#gethxprompt)
-   - [getBody](#getbody)
-   - [getRequestTarget](#getrequesttarget)
 
 ### 📂 Tomrf\HtmxMessage\HtmxResponse::class
 
@@ -130,7 +146,7 @@ public function getHxTrigger(
 ```php
 public function withHxTrigger(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -139,7 +155,7 @@ public function withHxTrigger(
 ```php
 public function withAddedHxTrigger(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -172,7 +188,7 @@ public function getHxTriggerAfterSettle(
 ```php
 public function withHxTriggerAfterSettle(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -181,7 +197,7 @@ public function withHxTriggerAfterSettle(
 ```php
 public function withAddedHxTriggerAfterSettle(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -214,7 +230,7 @@ public function getHxTriggerAfterSwap(
 ```php
 public function withHxTriggerAfterSwap(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -223,7 +239,7 @@ public function withHxTriggerAfterSwap(
 ```php
 public function withAddedHxTriggerAfterSwap(
     string $trigger,
-    mixed $argument = 
+    mixed $argument =
 ): static
 ```
 
@@ -421,24 +437,6 @@ public function getHxPrompt(
 ): string
 ```
 
-#### getBody()
-
-```php
-public function getBody(
-
-): void
-```
-
-#### getRequestTarget()
-
-```php
-public function getRequestTarget(
-
-): void
-```
-
-
-
 ***
 
-_Generated 2022-07-09T18:54:04+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-07-10T00:25:55+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_

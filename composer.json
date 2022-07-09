@@ -2,9 +2,45 @@
     "name": "tomrf/htmx-message",
     "type": "library",
     "description": "tomrf/htmx-message",
-    "keywords": [ "php" ],
+    "keywords": [ "htmx", "http-message", "psr-7", "server-request", "response-message" ],
     "homepage": "http://github.com/tomrf/htmx-message",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Rune Flo",
+            "email": "tom@x86.no",
+            "homepage": "http://github.com/tomrf/"
+        }
+    ],
+    "extra": {
+        "intro": [
+            "PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for `htmx`",
+            "with convenience methods for all special htmx headers (`HX-*`) in request and",
+            "response objects.",
+            "",
+            "See [the 📔 documentation](#documentation) for quick overview of relevant methods."
+
+        ],
+        "example": [
+            "$request = new HtmxRequest($request);      // object implementing PSR-7 `ServerRequestInterface`",
+            "",
+            "if ($request->isHxRequest() && $request->isHxBoosted()) {",
+            "    $layout = 'ajax.layout';",
+            "}",
+            "",
+            "[...]",
+            "",
+            "$response = new HtmxResponse($response);   // object implementing PSR-7 `ResponseInterface`",
+            "",
+            "$response = $response->withHxTrigger('aSimpleTrigger')",
+            "    ->withAddedHxTrigger('triggerWithParams', ['arg' => true, 'arg2' => 7])",
+            "    ->withTriggerAfterSwap('afterSwap', time());",
+            "    ->withHxPush($newUrl);",
+            "",
+            "// Emit $response as normal",
+            "[...]"
+        ]
+    },
     "require": {
         "php": "^8.0",
         "psr/http-message": "^1.0"
