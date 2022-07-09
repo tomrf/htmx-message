@@ -96,17 +96,13 @@ See [LICENSE](LICENSE) for more information.
 #### hasHxRedirect()
 
 ```php
-public function hasHxRedirect(
-
-): bool
+public function hasHxRedirect(): bool
 ```
 
 #### getHxRedirect()
 
 ```php
-public function getHxRedirect(
-
-): string
+public function getHxRedirect(): string
 ```
 
 #### withHxRedirect()
@@ -120,25 +116,19 @@ public function withHxRedirect(
 #### withoutHxRedirect()
 
 ```php
-public function withoutHxRedirect(
-
-): static
+public function withoutHxRedirect(): static
 ```
 
 #### hasHxTrigger()
 
 ```php
-public function hasHxTrigger(
-
-): bool
+public function hasHxTrigger(): bool
 ```
 
 #### getHxTrigger()
 
 ```php
-public function getHxTrigger(
-
-): array
+public function getHxTrigger(): array
 ```
 
 #### withHxTrigger()
@@ -162,25 +152,19 @@ public function withAddedHxTrigger(
 #### withoutHxTrigger()
 
 ```php
-public function withoutHxTrigger(
-
-): static
+public function withoutHxTrigger(): static
 ```
 
 #### hasHxTriggerAfterSettle()
 
 ```php
-public function hasHxTriggerAfterSettle(
-
-): bool
+public function hasHxTriggerAfterSettle(): bool
 ```
 
 #### getHxTriggerAfterSettle()
 
 ```php
-public function getHxTriggerAfterSettle(
-
-): array
+public function getHxTriggerAfterSettle(): array
 ```
 
 #### withHxTriggerAfterSettle()
@@ -204,25 +188,19 @@ public function withAddedHxTriggerAfterSettle(
 #### withoutHxTriggerAfterSettle()
 
 ```php
-public function withoutHxTriggerAfterSettle(
-
-): static
+public function withoutHxTriggerAfterSettle(): static
 ```
 
 #### hasHxTriggerAfterSwap()
 
 ```php
-public function hasHxTriggerAfterSwap(
-
-): bool
+public function hasHxTriggerAfterSwap(): bool
 ```
 
 #### getHxTriggerAfterSwap()
 
 ```php
-public function getHxTriggerAfterSwap(
-
-): array
+public function getHxTriggerAfterSwap(): array
 ```
 
 #### withHxTriggerAfterSwap()
@@ -246,49 +224,37 @@ public function withAddedHxTriggerAfterSwap(
 #### withoutHxTriggerAfterSwap()
 
 ```php
-public function withoutHxTriggerAfterSwap(
-
-): static
+public function withoutHxTriggerAfterSwap(): static
 ```
 
 #### hasHxRefresh()
 
 ```php
-public function hasHxRefresh(
-
-): bool
+public function hasHxRefresh(): bool
 ```
 
 #### withHxRefresh()
 
 ```php
-public function withHxRefresh(
-
-): static
+public function withHxRefresh(): static
 ```
 
 #### withoutHxRefresh()
 
 ```php
-public function withoutHxRefresh(
-
-): static
+public function withoutHxRefresh(): static
 ```
 
 #### hasHxRetarget()
 
 ```php
-public function hasHxRetarget(
-
-): bool
+public function hasHxRetarget(): bool
 ```
 
 #### getHxRetarget()
 
 ```php
-public function getHxRetarget(
-
-): string
+public function getHxRetarget(): string
 ```
 
 #### withHxRetarget()
@@ -302,25 +268,19 @@ public function withHxRetarget(
 #### withoutHxRetarget()
 
 ```php
-public function withoutHxRetarget(
-
-): static
+public function withoutHxRetarget(): static
 ```
 
 #### hasHxPush()
 
 ```php
-public function hasHxPush(
-
-): bool
+public function hasHxPush(): bool
 ```
 
 #### getHxPush()
 
 ```php
-public function getHxPush(
-
-): string
+public function getHxPush(): string
 ```
 
 #### withHxPush()
@@ -334,9 +294,7 @@ public function withHxPush(
 #### withoutHxPush()
 
 ```php
-public function withoutHxPush(
-
-): static
+public function withoutHxPush(): static
 ```
 
 ### 📂 Tomrf\HtmxMessage\HtmxServerRequest::class
@@ -344,97 +302,73 @@ public function withoutHxPush(
 #### isHxRequest()
 
 ```php
-public function isHxRequest(
-
-): bool
+public function isHxRequest(): bool
 ```
 
 #### isHxBoosted()
 
 ```php
-public function isHxBoosted(
-
-): bool
+public function isHxBoosted(): bool
 ```
 
 #### isHxHistoryRestoreRequest()
 
 ```php
-public function isHxHistoryRestoreRequest(
-
-): bool
+public function isHxHistoryRestoreRequest(): bool
 ```
 
 #### hasHxTrigger()
 
 ```php
-public function hasHxTrigger(
-
-): bool
+public function hasHxTrigger(): bool
 ```
 
 #### hasHxTriggerName()
 
 ```php
-public function hasHxTriggerName(
-
-): bool
+public function hasHxTriggerName(): bool
 ```
 
 #### hasHxTarget()
 
 ```php
-public function hasHxTarget(
-
-): bool
+public function hasHxTarget(): bool
 ```
 
 #### hasHxPrompt()
 
 ```php
-public function hasHxPrompt(
-
-): bool
+public function hasHxPrompt(): bool
 ```
 
 #### getHxCurrentUrl()
 
 ```php
-public function getHxCurrentUrl(
-
-): string
+public function getHxCurrentUrl(): string
 ```
 
 #### getHxTrigger()
 
 ```php
-public function getHxTrigger(
-
-): string
+public function getHxTrigger(): string
 ```
 
 #### getHxTriggerName()
 
 ```php
-public function getHxTriggerName(
-
-): string
+public function getHxTriggerName(): string
 ```
 
 #### getHxTarget()
 
 ```php
-public function getHxTarget(
-
-): string
+public function getHxTarget(): string
 ```
 
 #### getHxPrompt()
 
 ```php
-public function getHxPrompt(
-
-): string
+public function getHxPrompt(): string
 ```
 
 ***
