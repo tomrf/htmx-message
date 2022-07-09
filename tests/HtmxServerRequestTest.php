@@ -38,7 +38,8 @@ final class HtmxServerRequestTest extends TestCase
             ],
             [
                 'host' => 'example.com',
-                'accept' => 'text/html'
+                'accept' => 'text/html',
+                'hx-request' => 'true',
             ],
             [],
             [],
@@ -78,4 +79,35 @@ final class HtmxServerRequestTest extends TestCase
         static::assertSame(123, $newRequest->getAttribute('attr'));
         static::assertNotSame($htmxRequest, $newRequest);
     }
+
+    public function testNewInstanceFromNonHtmxRequestThrowsException(): void
+    {
+        $this->expectException(\RuntimeException::class);
+
+        $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+
+        $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+            $psr17Factory,
+            $psr17Factory,
+            $psr17Factory,
+            $psr17Factory
+        );
+
+        $serverRequest = $creator->fromArrays(
+            [
+                'HTTP_HOST' => 'example.com',
+                'REQUEST_URI' => '/',
+                'REQUEST_METHOD' => 'GET',
+            ],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ''
+        );
+
+        $htmxRequest = new HtmxServerRequest($serverRequest);
+    }
+
 }

@@ -17,7 +17,8 @@
         "bmitch/churn-php": "^1.7",
         "roave/security-advisories": "dev-latest",
         "nyholm/psr7-server": "^1.0",
-        "nyholm/psr7": "^1.5"
+        "nyholm/psr7": "^1.5",
+        "tomrf/http-emitter": "^0.0.2"
     },
     "autoload": {
         "psr-4": {

@@ -7,12 +7,16 @@ namespace Tomrf\HtmxMessage;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
+use RuntimeException;
 
 class HtmxServerRequest implements ServerRequestInterface
 {
     final public function __construct(
         protected ServerRequestInterface $request,
     ) {
+        if (!$request->hasHeader('hx-request')) {
+            throw new RuntimeException('Not a htmx request');
+        }
     }
 
     // HtmxServerRequest
@@ -21,24 +25,59 @@ class HtmxServerRequest implements ServerRequestInterface
         return $this->request;
     }
 
+    public function isHxBoosted(): bool
+    {
+        return $this->request->hasHeader('HX-Boosted');
+    }
+
+    public function isHxHistoryRestoreRequest(): bool
+    {
+        return $this->request->hasHeader('HX-History-Restore-Request');
+    }
+
+    public function hasHxTrigger(): bool
+    {
+        return $this->request->hasHeader('HX-Trigger');
+    }
+
+    public function hasHxTriggerName(): bool
+    {
+        return $this->request->hasHeader('HX-Trigger-Name');
+    }
+
+    public function hasHxTarget(): bool
+    {
+        return $this->request->hasHeader('HX-Target');
+    }
+
+    public function hasHxPrompt(): bool
+    {
+        return $this->request->hasHeader('HX-Prompt');
+    }
+
+    public function getHxCurrentUrl(): string
+    {
+        return $this->request->getHeaderLine('HX-Current-URL');
+    }
+
     public function getHxTrigger(): string
     {
-        return $this->request->getHeaderLine('X-HX-Trigger');
+        return $this->request->getHeaderLine('HX-Trigger');
     }
 
     public function getHxTriggerName(): string
     {
-        return $this->request->getHeaderLine('X-HX-TriggerName');
+        return $this->request->getHeaderLine('HX-Trigger-Name');
     }
 
     public function getHxTarget(): string
     {
-        return $this->request->getHeaderLine('X-HX-Target');
+        return $this->request->getHeaderLine('HX-Target');
     }
 
     public function getHxPrompt(): string
     {
-        return $this->request->getHeaderLine('X-HX-Prompt');
+        return $this->request->getHeaderLine('HX-Prompt');
     }
 
     // MessageInterface
@@ -119,7 +158,7 @@ class HtmxServerRequest implements ServerRequestInterface
     }
 
     /**
-     * @SuppressWarnings(PHPMD)
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param bool $preserveHost
      */

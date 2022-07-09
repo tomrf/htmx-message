@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e406d775dc4d8f4beb109e476906c65",
+    "content-hash": "aa1878c2cff8bbece4a422f158aae198",
     "packages": [
         {
             "name": "psr/http-message",
@@ -5287,6 +5287,70 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
+        },
+        {
+            "name": "tomrf/http-emitter",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tomrf/http-emitter.git",
+                "reference": "1e46b8b288308643eee77d6c598d2b97f1db1e51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomrf/http-emitter/zipball/1e46b8b288308643eee77d6c598d2b97f1db1e51",
+                "reference": "1e46b8b288308643eee77d6c598d2b97f1db1e51",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.19",
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "nyholm/psr7": "^1.5",
+                "nyholm/psr7-server": "^1.0",
+                "phpmd/phpmd": "^2.12",
+                "phpstan/phpstan": "^1.6",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest",
+                "tomrf/readme-gen": "^0.0.5"
+            },
+            "type": "library",
+            "extra": {
+                "intro": [
+                    "Simple PSR-7 response emitter with sensible CLI SAPI output"
+                ],
+                "example": [
+                    "$httpEmitter = new HttpEmitter();",
+                    "$httpEmitter->emit($response); // PSR-7 response object"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tomrf\\HttpEmitter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PSR-7 response emitter",
+            "homepage": "http://github.com/tomrf/http-emitter",
+            "keywords": [
+                "cli-sapi",
+                "http",
+                "http-message",
+                "psr-7",
+                "response-emitter",
+                "sapi"
+            ],
+            "support": {
+                "issues": "https://github.com/tomrf/http-emitter/issues",
+                "source": "https://github.com/tomrf/http-emitter/tree/0.0.2"
+            },
+            "time": "2022-06-15T21:04:44+00:00"
         },
         {
             "name": "webmozart/assert",
