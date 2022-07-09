@@ -29,7 +29,7 @@ $response = new HtmxResponse($response);   // object implementing PSR-7 `Respons
 
 $response = $response->withHxTrigger('aSimpleTrigger')
     ->withAddedHxTrigger('triggerWithParams', ['arg' => true, 'arg2' => 7])
-    ->withTriggerAfterSwap('afterSwap', time());
+    ->withTriggerAfterSwap('afterSwap', time())
     ->withHxPush($newUrl);
 
 // Emit $response as normal
