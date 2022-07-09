@@ -57,7 +57,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
+     * @param string $name
      */
     public function hasHeader($name)
     {
@@ -67,7 +67,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
+     * @param string $name
      */
     public function getHeader($name)
     {
@@ -77,7 +77,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
+     * @param string $name
      */
     public function getHeaderLine($name)
     {
@@ -87,7 +87,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $version
+     * @param string $version
      */
     public function withProtocolVersion($version)
     {
@@ -97,8 +97,8 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
-     * @param mixed $value
+     * @param string               $name
+     * @param array<string>|string $value
      */
     public function withHeader($name, $value)
     {
@@ -108,8 +108,8 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
-     * @param mixed $value
+     * @param string               $name
+     * @param array<string>|string $value
      */
     public function withAddedHeader($name, $value)
     {
@@ -119,7 +119,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
+     * @param string $name
      */
     public function withoutHeader($name)
     {
@@ -162,7 +162,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $method
+     * @param string $method
      */
     public function withMethod($method)
     {
@@ -255,7 +255,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed      $name
+     * @param string     $name
      * @param null|mixed $default
      */
     public function getAttribute($name, $default = null)
@@ -306,8 +306,8 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
-     * @param mixed $value
+     * @param string $name
+     * @param mixed  $value
      */
     public function withAttribute($name, $value)
     {
@@ -317,7 +317,7 @@ class ServerRequestProxy implements ServerRequestInterface
     /**
      * @internal
      *
-     * @param mixed $name
+     * @param string $name
      */
     public function withoutAttribute($name)
     {

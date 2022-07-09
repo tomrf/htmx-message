@@ -49,8 +49,8 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $code
-      * @param mixed $reasonPhrase
+      * @param int $code
+      * @param string $reasonPhrase
       */
      public function withStatus($code, $reasonPhrase = '')
      {
@@ -62,7 +62,7 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
+      * @param string $name
       */
      public function hasHeader($name)
      {
@@ -96,7 +96,7 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
+      * @param string $name
       */
      public function getHeader($name)
      {
@@ -106,7 +106,7 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
+      * @param string $name
       */
      public function getHeaderLine($name)
      {
@@ -116,7 +116,7 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $version
+      * @param string $version
       */
      public function withProtocolVersion($version)
      {
@@ -126,8 +126,8 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
-      * @param mixed $value
+      * @param string $name
+      * @param array<string>|string $value
       */
      public function withHeader($name, $value)
      {
@@ -137,8 +137,8 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
-      * @param mixed $value
+      * @param string $name
+      * @param array<string>|string $value
       */
      public function withAddedHeader($name, $value)
      {
@@ -156,7 +156,7 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       *
-      * @param mixed $name
+      * @param string $name
       */
      public function withoutHeader($name)
      {
