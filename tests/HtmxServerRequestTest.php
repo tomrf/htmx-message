@@ -10,7 +10,10 @@ use Tomrf\HtmxMessage\HtmxServerRequest;
 
 /**
  * @internal
+ * @covers \Tomrf\HtmxMessage\HtmxResponse
  * @covers \Tomrf\HtmxMessage\HtmxServerRequest
+ * @covers \Tomrf\HtmxMessage\ResponseProxy
+ * @covers \Tomrf\HtmxMessage\ServerRequestProxy
  */
 final class HtmxServerRequestTest extends TestCase
 {
@@ -34,7 +37,7 @@ final class HtmxServerRequestTest extends TestCase
             [
                 'HTTP_HOST' => 'example.com',
                 'REQUEST_URI' => '/',
-                'REQUEST_METHOD' => 'GET'
+                'REQUEST_METHOD' => 'GET',
             ],
             [
                 'host' => 'example.com',
@@ -109,5 +112,4 @@ final class HtmxServerRequestTest extends TestCase
 
         static::assertFalse($htmxRequest->isHxRequest());
     }
-
 }

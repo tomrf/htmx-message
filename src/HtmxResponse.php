@@ -4,24 +4,8 @@ declare(strict_types=1);
 
 namespace Tomrf\HtmxMessage;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
-
 class HtmxResponse extends ResponseProxy
 {
-    protected array $triggers = [];
-
-    final public function __construct(
-        protected ResponseInterface $response,
-    ) {
-    }
-
-    // HtmxResponse
-    public function getResponse(): ResponseInterface
-    {
-        return $this->response;
-    }
-
     // HX-Redirect
     public function hasHxRedirect(): bool
     {
@@ -188,21 +172,4 @@ class HtmxResponse extends ResponseProxy
     {
         return $this->withoutHeader('HX-Push');
     }
-
-    // PSR-7 ResponseInterface
-    public function getStatusCode()
-    {
-        return $this->response->getStatusCode();
-    }
-
-    public function getReasonPhrase()
-    {
-        return $this->response->getReasonPhrase();
-    }
-
-    public function withStatus($code, $reasonPhrase = '')
-    {
-        return new static($this->response->withStatus($code, $reasonPhrase));
-    }
-
 }

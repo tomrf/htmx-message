@@ -7,82 +7,159 @@ namespace Tomrf\HtmxMessage;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-class ResponseProxy implements ResponseInterface
-{
-    final public function __construct(
-        protected ResponseInterface $response,
-    ) {
-    }
+ /**
+  * @internal
+  */
+ class ResponseProxy implements ResponseInterface
+ {
+     /**
+      * @internal
+      */
+     final public function __construct(
+         protected ResponseInterface $response,
+     ) {
+     }
 
-    // PSR-7 ResponseInterface
-    public function getStatusCode()
-    {
-        return $this->response->getStatusCode();
-    }
+     /**
+      * @internal
+      */
+     public function getResponse(): ResponseInterface
+     {
+         return $this->response;
+     }
 
-    public function getReasonPhrase()
-    {
-        return $this->response->getReasonPhrase();
-    }
+     // PSR-7 ResponseInterface
 
-    public function withStatus($code, $reasonPhrase = '')
-    {
-        return new static($this->response->withStatus($code, $reasonPhrase));
-    }
+     /**
+      * @internal
+      */
+     public function getStatusCode()
+     {
+         return $this->response->getStatusCode();
+     }
 
-    // PSR-7 MessageInterface
-    public function hasHeader($name)
-    {
-        return $this->response->hasHeader($name);
-    }
+     /**
+      * @internal
+      */
+     public function getReasonPhrase()
+     {
+         return $this->response->getReasonPhrase();
+     }
 
-    public function getBody()
-    {
-        return $this->response->getBody();
-    }
+     /**
+      * @internal
+      *
+      * @param mixed $code
+      * @param mixed $reasonPhrase
+      */
+     public function withStatus($code, $reasonPhrase = '')
+     {
+         return new static($this->response->withStatus($code, $reasonPhrase));
+     }
 
-    public function getProtocolVersion()
-    {
-        return $this->response->getProtocolVersion();
-    }
+     // PSR-7 MessageInterface
 
-    public function getHeaders()
-    {
-        return $this->response->getHeaders();
-    }
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      */
+     public function hasHeader($name)
+     {
+         return $this->response->hasHeader($name);
+     }
 
-    public function getHeader($name)
-    {
-        return $this->response->getHeader($name);
-    }
+     /**
+      * @internal
+      */
+     public function getBody()
+     {
+         return $this->response->getBody();
+     }
 
-    public function getHeaderLine($name)
-    {
-        return $this->response->getHeaderLine($name);
-    }
+     /**
+      * @internal
+      */
+     public function getProtocolVersion()
+     {
+         return $this->response->getProtocolVersion();
+     }
 
-    public function withProtocolVersion($version)
-    {
-        return new static($this->response->withProtocolVersion($version));
-    }
+     /**
+      * @internal
+      */
+     public function getHeaders()
+     {
+         return $this->response->getHeaders();
+     }
 
-    public function withHeader($name, $value)
-    {
-        return new static($this->response->withHeader($name, $value));
-    }
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      */
+     public function getHeader($name)
+     {
+         return $this->response->getHeader($name);
+     }
 
-    public function withAddedHeader($name, $value)
-    {
-        return new static($this->response->withAddedHeader($name, $value));
-    }
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      */
+     public function getHeaderLine($name)
+     {
+         return $this->response->getHeaderLine($name);
+     }
 
-    public function withBody(StreamInterface $body)
-    {
-        return new static($this->response->withBody($body));
-    }
+     /**
+      * @internal
+      *
+      * @param mixed $version
+      */
+     public function withProtocolVersion($version)
+     {
+         return new static($this->response->withProtocolVersion($version));
+     }
 
-    public function withoutHeader($name)
-    {
-        return new static($this->response->withoutHeader($name));
-    }
-}
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      * @param mixed $value
+      */
+     public function withHeader($name, $value)
+     {
+         return new static($this->response->withHeader($name, $value));
+     }
+
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      * @param mixed $value
+      */
+     public function withAddedHeader($name, $value)
+     {
+         return new static($this->response->withAddedHeader($name, $value));
+     }
+
+     /**
+      * @internal
+      */
+     public function withBody(StreamInterface $body)
+     {
+         return new static($this->response->withBody($body));
+     }
+
+     /**
+      * @internal
+      *
+      * @param mixed $name
+      */
+     public function withoutHeader($name)
+     {
+         return new static($this->response->withoutHeader($name));
+     }
+ }

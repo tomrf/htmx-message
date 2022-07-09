@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1878c2cff8bbece4a422f158aae198",
+    "content-hash": "e252ed3ddd931682285a79ab19d9fe01",
     "packages": [
         {
             "name": "psr/http-message",
@@ -652,6 +652,51 @@
                 }
             ],
             "time": "2022-03-18T17:20:59+00:00"
+        },
+        {
+            "name": "haydenpierce/class-finder",
+            "version": "0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/hpierce1102/ClassFinder.git",
+                "reference": "d6c68f386c764674c59ee336d1dfca35aada5f90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/hpierce1102%2FClassFinder/repository/archive.zip?sha=d6c68f386c764674c59ee336d1dfca35aada5f90",
+                "reference": "d6c68f386c764674c59ee336d1dfca35aada5f90",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HaydenPierce\\ClassFinder\\": "src/",
+                    "HaydenPierce\\ClassFinder\\UnitTest\\": "test/unit"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hayden Pierce",
+                    "email": "hayden@haydenpierce.com"
+                }
+            ],
+            "description": "A library that can provide of a list of classes in a given namespace",
+            "support": {
+                "issues": "https://gitlab.com/api/v4/projects/7670051/issues"
+            },
+            "time": "2021-01-05T20:50:49+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5351,6 +5396,86 @@
                 "source": "https://github.com/tomrf/http-emitter/tree/0.0.2"
             },
             "time": "2022-06-15T21:04:44+00:00"
+        },
+        {
+            "name": "tomrf/readme-gen",
+            "version": "0.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tomrf/readme-gen.git",
+                "reference": "d93be8f6631e3a2d61f89f07cc44e5654b52a0a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomrf/readme-gen/zipball/d93be8f6631e3a2d61f89f07cc44e5654b52a0a4",
+                "reference": "d93be8f6631e3a2d61f89f07cc44e5654b52a0a4",
+                "shasum": ""
+            },
+            "require": {
+                "haydenpierce/class-finder": "^0.4.3",
+                "php": "^8.0",
+                "phpdocumentor/reflection-docblock": "^5.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "phpmd/phpmd": "^2.12",
+                "phpstan/phpstan": "^1.6",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest"
+            },
+            "bin": [
+                "bin/readme-gen"
+            ],
+            "type": "library",
+            "extra": {
+                "intro": [
+                    "Automatically generates a 📚 README file with public API documentation for a PHP package, ",
+                    "based on docblocks and package information from composer.json",
+                    "",
+                    "Included formatters:",
+                    " - Markdown"
+                ],
+                "example": [
+                    "$readmeGen = new \\Tomrf\\ReadmeGen\\ReadmeGen('.'); // path to project directory",
+                    "",
+                    "echo $readmeGen->generate(",
+                    "    new Tomrf\\ReadmeGen\\Formatter\\MarkdownFormatter(",
+                    "        \\phpDocumentor\\Reflection\\DocBlockFactory::createInstance(),",
+                    "        new \\phpDocumentor\\Reflection\\Types\\ContextFactory()",
+                    "    ),",
+                    "    'resources/template.md'",
+                    ");"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tomrf\\ReadmeGen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Rune Flo",
+                    "email": "tom@x86.no",
+                    "homepage": "http://github.com/tomrf/"
+                }
+            ],
+            "description": "generates readme with public api documentation for php packages",
+            "homepage": "http://github.com/tomrf/readme-gen",
+            "keywords": [
+                "README.md",
+                "documentation",
+                "markdown",
+                "readme"
+            ],
+            "support": {
+                "issues": "https://github.com/tomrf/readme-gen/issues",
+                "source": "https://github.com/tomrf/readme-gen/tree/0.0.6"
+            },
+            "time": "2022-07-09T16:45:15+00:00"
         },
         {
             "name": "webmozart/assert",

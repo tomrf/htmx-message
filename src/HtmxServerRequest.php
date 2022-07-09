@@ -8,7 +8,7 @@ class HtmxServerRequest extends ServerRequestProxy
 {
     public function isHxRequest(): bool
     {
-        return $this->hasHeader('HX-Request');
+        return $this->request->hasHeader('HX-Request');
     }
 
     public function isHxBoosted(): bool
