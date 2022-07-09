@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e47d60cef6bdfb2142e45ff83b3cb75e",
+    "content-hash": "d221b7e757a64904349f21623f0bf6a4",
     "packages": [
         {
             "name": "psr/http-message",
@@ -5399,16 +5399,16 @@
         },
         {
             "name": "tomrf/readme-gen",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tomrf/readme-gen.git",
-                "reference": "d93be8f6631e3a2d61f89f07cc44e5654b52a0a4"
+                "reference": "a9949a5a5c3763e47f93fc98a855364fd817aaf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomrf/readme-gen/zipball/d93be8f6631e3a2d61f89f07cc44e5654b52a0a4",
-                "reference": "d93be8f6631e3a2d61f89f07cc44e5654b52a0a4",
+                "url": "https://api.github.com/repos/tomrf/readme-gen/zipball/a9949a5a5c3763e47f93fc98a855364fd817aaf8",
+                "reference": "a9949a5a5c3763e47f93fc98a855364fd817aaf8",
                 "shasum": ""
             },
             "require": {
@@ -5473,9 +5473,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tomrf/readme-gen/issues",
-                "source": "https://github.com/tomrf/readme-gen/tree/0.0.6"
+                "source": "https://github.com/tomrf/readme-gen/tree/0.0.7"
             },
-            "time": "2022-07-09T16:45:15+00:00"
+            "time": "2022-07-09T23:47:48+00:00"
         },
         {
             "name": "webmozart/assert",
