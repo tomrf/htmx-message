@@ -80,10 +80,8 @@ final class HtmxServerRequestTest extends TestCase
         static::assertNotSame($htmxRequest, $newRequest);
     }
 
-    public function testNewInstanceFromNonHtmxRequestThrowsException(): void
+    public function testNewInstanceFromNonHtmxRequest(): void
     {
-        $this->expectException(\RuntimeException::class);
-
         $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
 
         $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
@@ -108,6 +106,8 @@ final class HtmxServerRequestTest extends TestCase
         );
 
         $htmxRequest = new HtmxServerRequest($serverRequest);
+
+        static::assertFalse($htmxRequest->isHxRequest());
     }
 
 }
