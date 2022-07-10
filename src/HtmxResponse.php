@@ -6,10 +6,9 @@ namespace Tomrf\HtmxMessage;
 
 class HtmxResponse extends ResponseProxy
 {
-    // HX-Redirect
-    public function hasHxRedirect(): bool
+    public function getHxPush(): string
     {
-        return $this->hasHeader('HX-Redirect');
+        return $this->getHeaderLine('HX-Push');
     }
 
     public function getHxRedirect(): string
@@ -17,20 +16,9 @@ class HtmxResponse extends ResponseProxy
         return $this->getHeaderLine('HX-Redirect');
     }
 
-    public function withHxRedirect(string $url): static
+    public function getHxRetarget(): string
     {
-        return $this->withHeader('HX-Redirect', $url);
-    }
-
-    public function withoutHxRedirect(): static
-    {
-        return $this->withoutHeader('HX-Redirect');
-    }
-
-    // HX-Trigger
-    public function hasHxTrigger(): bool
-    {
-        return $this->hasHeader('HX-Trigger');
+        return $this->getHeaderLine('HX-Retarget');
     }
 
     /**
@@ -41,59 +29,12 @@ class HtmxResponse extends ResponseProxy
         return (array) json_decode($this->getHeaderLine('HX-Trigger'), true);
     }
 
-    public function withHxTrigger(string $trigger, mixed $argument = null): static
-    {
-        return $this->withHeader('HX-Trigger', (string) json_encode([$trigger => $argument]));
-    }
-
-    public function withAddedHxTrigger(string $trigger, mixed $argument = null): static
-    {
-        $value = (array) json_decode($this->getHeaderLine('HX-Trigger'), true);
-        $value[$trigger] = $argument;
-
-        return $this->withHeader('HX-Trigger', (string) json_encode($value));
-    }
-
-    public function withoutHxTrigger(): static
-    {
-        return $this->withoutHeader('HX-Trigger');
-    }
-
-    // HX-Trigger-After-Settle
-    public function hasHxTriggerAfterSettle(): bool
-    {
-        return $this->hasHeader('HX-Trigger-After-Settle');
-    }
-
     /**
      * @return array<mixed>
      */
     public function getHxTriggerAfterSettle(): array
     {
         return (array) json_decode($this->getHeaderLine('HX-Trigger-After-Settle'), true);
-    }
-
-    public function withHxTriggerAfterSettle(string $trigger, mixed $argument = null): static
-    {
-        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode([$trigger => $argument]));
-    }
-
-    public function withAddedHxTriggerAfterSettle(string $trigger, mixed $argument = null): static
-    {
-        $value = (array) json_decode($this->getHeaderLine('HX-Trigger-After-Settle'), true);
-        $value[$trigger] = $argument;
-
-        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode($value));
-    }
-
-    public function withoutHxTriggerAfterSettle(): static
-    {
-        return $this->withoutHeader('HX-Trigger-After-Settle');
-    }
-
-    public function hasHxTriggerAfterSwap(): bool
-    {
-        return $this->hasHeader('HX-Trigger-After-Swap');
     }
 
     /**
@@ -104,9 +45,62 @@ class HtmxResponse extends ResponseProxy
         return (array) json_decode($this->getHeaderLine('HX-Trigger-After-Swap'), true);
     }
 
-    public function withHxTriggerAfterSwap(string $trigger, mixed $argument = null): static
+    // HX-Push
+    public function hasHxPush(): bool
     {
-        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode([$trigger => $argument]));
+        return 'true' === $this->getHeaderLine('HX-Push');
+    }
+
+    // HX-Redirect
+    public function hasHxRedirect(): bool
+    {
+        return $this->hasHeader('HX-Redirect');
+    }
+
+    // HX-Refresh
+
+    public function hasHxRefresh(): bool
+    {
+        return 'true' === $this->getHeaderLine('HX-Refresh');
+    }
+
+    // HX-Retarget
+    public function hasHxRetarget(): bool
+    {
+        return 'true' === $this->getHeaderLine('HX-Retarget');
+    }
+
+    // HX-Trigger
+    public function hasHxTrigger(): bool
+    {
+        return $this->hasHeader('HX-Trigger');
+    }
+
+    // HX-Trigger-After-Settle
+    public function hasHxTriggerAfterSettle(): bool
+    {
+        return $this->hasHeader('HX-Trigger-After-Settle');
+    }
+
+    public function hasHxTriggerAfterSwap(): bool
+    {
+        return $this->hasHeader('HX-Trigger-After-Swap');
+    }
+
+    public function withAddedHxTrigger(string $trigger, mixed $argument = null): static
+    {
+        $value = (array) json_decode($this->getHeaderLine('HX-Trigger'), true);
+        $value[$trigger] = $argument;
+
+        return $this->withHeader('HX-Trigger', (string) json_encode($value));
+    }
+
+    public function withAddedHxTriggerAfterSettle(string $trigger, mixed $argument = null): static
+    {
+        $value = (array) json_decode($this->getHeaderLine('HX-Trigger-After-Settle'), true);
+        $value[$trigger] = $argument;
+
+        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode($value));
     }
 
     public function withAddedHxTriggerAfterSwap(string $trigger, mixed $argument = null): static
@@ -117,16 +111,14 @@ class HtmxResponse extends ResponseProxy
         return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode($value));
     }
 
-    public function withoutHxTriggerAfterSwap(): static
+    public function withHxPush(string|bool $url): static
     {
-        return $this->withoutHeader('HX-Trigger-After-Swap');
+        return $this->withHeader('HX-Push', (string) $url);
     }
 
-    // HX-Refresh
-
-    public function hasHxRefresh(): bool
+    public function withHxRedirect(string $url): static
     {
-        return 'true' === $this->getHeaderLine('HX-Refresh');
+        return $this->withHeader('HX-Redirect', $url);
     }
 
     public function withHxRefresh(): static
@@ -134,25 +126,39 @@ class HtmxResponse extends ResponseProxy
         return $this->withHeader('HX-Refresh', 'true');
     }
 
-    public function withoutHxRefresh(): static
-    {
-        return $this->withoutHeader('HX-Refresh');
-    }
-
-    // HX-Retarget
-    public function hasHxRetarget(): bool
-    {
-        return 'true' === $this->getHeaderLine('HX-Retarget');
-    }
-
-    public function getHxRetarget(): string
-    {
-        return $this->getHeaderLine('HX-Retarget');
-    }
-
     public function withHxRetarget(string $selector): static
     {
         return $this->withHeader('HX-Retarget', $selector);
+    }
+
+    public function withHxTrigger(string $trigger, mixed $argument = null): static
+    {
+        return $this->withHeader('HX-Trigger', (string) json_encode([$trigger => $argument]));
+    }
+
+    public function withHxTriggerAfterSettle(string $trigger, mixed $argument = null): static
+    {
+        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode([$trigger => $argument]));
+    }
+
+    public function withHxTriggerAfterSwap(string $trigger, mixed $argument = null): static
+    {
+        return $this->withHeader('HX-Trigger-After-Settle', (string) json_encode([$trigger => $argument]));
+    }
+
+    public function withoutHxPush(): static
+    {
+        return $this->withoutHeader('HX-Push');
+    }
+
+    public function withoutHxRedirect(): static
+    {
+        return $this->withoutHeader('HX-Redirect');
+    }
+
+    public function withoutHxRefresh(): static
+    {
+        return $this->withoutHeader('HX-Refresh');
     }
 
     public function withoutHxRetarget(): static
@@ -160,24 +166,18 @@ class HtmxResponse extends ResponseProxy
         return $this->withoutHeader('HX-Retarget');
     }
 
-    // HX-Push
-    public function hasHxPush(): bool
+    public function withoutHxTrigger(): static
     {
-        return 'true' === $this->getHeaderLine('HX-Push');
+        return $this->withoutHeader('HX-Trigger');
     }
 
-    public function getHxPush(): string
+    public function withoutHxTriggerAfterSettle(): static
     {
-        return $this->getHeaderLine('HX-Push');
+        return $this->withoutHeader('HX-Trigger-After-Settle');
     }
 
-    public function withHxPush(string|bool $url): static
+    public function withoutHxTriggerAfterSwap(): static
     {
-        return $this->withHeader('HX-Push', (string) $url);
-    }
-
-    public function withoutHxPush(): static
-    {
-        return $this->withoutHeader('HX-Push');
+        return $this->withoutHeader('HX-Trigger-After-Swap');
     }
 }

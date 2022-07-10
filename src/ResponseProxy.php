@@ -23,74 +23,9 @@ use Psr\Http\Message\StreamInterface;
      /**
       * @internal
       */
-     public function getResponse(): ResponseInterface
-     {
-         return $this->response;
-     }
-
-     // PSR-7 ResponseInterface
-
-     /**
-      * @internal
-      */
-     public function getStatusCode()
-     {
-         return $this->response->getStatusCode();
-     }
-
-     /**
-      * @internal
-      */
-     public function getReasonPhrase()
-     {
-         return $this->response->getReasonPhrase();
-     }
-
-     /**
-      * @internal
-      *
-      * @param int $code
-      * @param string $reasonPhrase
-      */
-     public function withStatus($code, $reasonPhrase = '')
-     {
-         return new static($this->response->withStatus($code, $reasonPhrase));
-     }
-
-     // PSR-7 MessageInterface
-
-     /**
-      * @internal
-      *
-      * @param string $name
-      */
-     public function hasHeader($name)
-     {
-         return $this->response->hasHeader($name);
-     }
-
-     /**
-      * @internal
-      */
      public function getBody()
      {
          return $this->response->getBody();
-     }
-
-     /**
-      * @internal
-      */
-     public function getProtocolVersion()
-     {
-         return $this->response->getProtocolVersion();
-     }
-
-     /**
-      * @internal
-      */
-     public function getHeaders()
-     {
-         return $this->response->getHeaders();
      }
 
      /**
@@ -115,23 +50,56 @@ use Psr\Http\Message\StreamInterface;
 
      /**
       * @internal
-      *
-      * @param string $version
       */
-     public function withProtocolVersion($version)
+     public function getHeaders()
      {
-         return new static($this->response->withProtocolVersion($version));
+         return $this->response->getHeaders();
      }
+
+     /**
+      * @internal
+      */
+     public function getProtocolVersion()
+     {
+         return $this->response->getProtocolVersion();
+     }
+
+     /**
+      * @internal
+      */
+     public function getReasonPhrase()
+     {
+         return $this->response->getReasonPhrase();
+     }
+
+     /**
+      * @internal
+      */
+     public function getResponse(): ResponseInterface
+     {
+         return $this->response;
+     }
+
+     // PSR-7 ResponseInterface
+
+     /**
+      * @internal
+      */
+     public function getStatusCode()
+     {
+         return $this->response->getStatusCode();
+     }
+
+     // PSR-7 MessageInterface
 
      /**
       * @internal
       *
       * @param string $name
-      * @param array<string>|string $value
       */
-     public function withHeader($name, $value)
+     public function hasHeader($name)
      {
-         return new static($this->response->withHeader($name, $value));
+         return $this->response->hasHeader($name);
      }
 
      /**
@@ -157,9 +125,41 @@ use Psr\Http\Message\StreamInterface;
       * @internal
       *
       * @param string $name
+      * @param array<string>|string $value
+      */
+     public function withHeader($name, $value)
+     {
+         return new static($this->response->withHeader($name, $value));
+     }
+
+     /**
+      * @internal
+      *
+      * @param string $name
       */
      public function withoutHeader($name)
      {
          return new static($this->response->withoutHeader($name));
+     }
+
+     /**
+      * @internal
+      *
+      * @param string $version
+      */
+     public function withProtocolVersion($version)
+     {
+         return new static($this->response->withProtocolVersion($version));
+     }
+
+     /**
+      * @internal
+      *
+      * @param int $code
+      * @param string $reasonPhrase
+      */
+     public function withStatus($code, $reasonPhrase = '')
+     {
+         return new static($this->response->withStatus($code, $reasonPhrase));
      }
  }

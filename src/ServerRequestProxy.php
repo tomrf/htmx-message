@@ -23,10 +23,23 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
+     *
+     * @param string     $name
+     * @param null|mixed $default
      */
-    public function getRequest(): ServerRequestInterface
+    public function getAttribute($name, $default = null)
     {
-        return $this->request;
+        return $this->request->getAttribute($name, $default);
+    }
+
+    /**
+     * @internal
+     *
+     * @return array<mixed>
+     */
+    public function getAttributes()
+    {
+        return $this->request->getAttributes();
     }
 
     // PSR-7 MessageInterface
@@ -40,28 +53,12 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
-     */
-    public function getProtocolVersion()
-    {
-        return $this->request->getProtocolVersion();
-    }
-
-    /**
-     * @internal
-     */
-    public function getHeaders()
-    {
-        return $this->request->getHeaders();
-    }
-
-    /**
-     * @internal
      *
-     * @param string $name
+     * @return array<mixed>
      */
-    public function hasHeader($name)
+    public function getCookieParams()
     {
-        return $this->request->hasHeader($name);
+        return $this->request->getCookieParams();
     }
 
     /**
@@ -86,61 +83,10 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
-     *
-     * @param string $version
      */
-    public function withProtocolVersion($version)
+    public function getHeaders()
     {
-        return new static($this->request->withProtocolVersion($version));
-    }
-
-    /**
-     * @internal
-     *
-     * @param string               $name
-     * @param array<string>|string $value
-     */
-    public function withHeader($name, $value)
-    {
-        return new static($this->request->withHeader($name, $value));
-    }
-
-    /**
-     * @internal
-     *
-     * @param string               $name
-     * @param array<string>|string $value
-     */
-    public function withAddedHeader($name, $value)
-    {
-        return new static($this->request->withAddedHeader($name, $value));
-    }
-
-    /**
-     * @internal
-     *
-     * @param string $name
-     */
-    public function withoutHeader($name)
-    {
-        return new static($this->request->withoutHeader($name));
-    }
-
-    /**
-     * @internal
-     */
-    public function withBody(StreamInterface $body)
-    {
-        return new static($this->request->withBody($body));
-    }
-
-    // PSR-7 RequestInterface
-    /**
-     * @internal
-     */
-    public function getRequestTarget()
-    {
-        return $this->request->getRequestTarget();
+        return $this->request->getHeaders();
     }
 
     /**
@@ -153,41 +99,47 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
+     *
+     * @return null|array<mixed>|object
      */
-    public function getUri()
+    public function getParsedBody()
     {
-        return $this->request->getUri();
+        return $this->request->getParsedBody();
+    }
+
+    /**
+     * @internal
+     */
+    public function getProtocolVersion()
+    {
+        return $this->request->getProtocolVersion();
     }
 
     /**
      * @internal
      *
-     * @param string $method
+     * @return array<mixed>
      */
-    public function withMethod($method)
+    public function getQueryParams()
     {
-        return new static($this->request->withMethod($method));
+        return $this->request->getQueryParams();
     }
 
     /**
      * @internal
-     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
-     *
-     * @param bool $preserveHost
      */
-    public function withUri(UriInterface $uri, $preserveHost = false)
+    public function getRequest(): ServerRequestInterface
     {
-        return new static($this->request->withUri($uri, $preserveHost));
+        return $this->request;
     }
 
+    // PSR-7 RequestInterface
     /**
      * @internal
-     *
-     * @param mixed $requestTarget
      */
-    public function withRequestTarget($requestTarget)
+    public function getRequestTarget()
     {
-        return new static($this->request->withRequestTarget($requestTarget));
+        return $this->request->getRequestTarget();
     }
 
     // ServerRequestInterface
@@ -207,26 +159,6 @@ class ServerRequestProxy implements ServerRequestInterface
      *
      * @return array<mixed>
      */
-    public function getCookieParams()
-    {
-        return $this->request->getCookieParams();
-    }
-
-    /**
-     * @internal
-     *
-     * @return array<mixed>
-     */
-    public function getQueryParams()
-    {
-        return $this->request->getQueryParams();
-    }
-
-    /**
-     * @internal
-     *
-     * @return array<mixed>
-     */
     public function getUploadedFiles()
     {
         return $this->request->getUploadedFiles();
@@ -234,73 +166,31 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
-     *
-     * @return null|array<mixed>|object
      */
-    public function getParsedBody()
+    public function getUri()
     {
-        return $this->request->getParsedBody();
+        return $this->request->getUri();
     }
 
     /**
      * @internal
      *
-     * @return array<mixed>
+     * @param string $name
      */
-    public function getAttributes()
+    public function hasHeader($name)
     {
-        return $this->request->getAttributes();
+        return $this->request->hasHeader($name);
     }
 
     /**
      * @internal
      *
-     * @param string     $name
-     * @param null|mixed $default
+     * @param string               $name
+     * @param array<string>|string $value
      */
-    public function getAttribute($name, $default = null)
+    public function withAddedHeader($name, $value)
     {
-        return $this->request->getAttribute($name, $default);
-    }
-
-    /**
-     * @internal
-     *
-     * @param null|array<mixed>|object $data
-     */
-    public function withParsedBody($data)
-    {
-        return new static($this->request->withParsedBody($data));
-    }
-
-    /**
-     * @internal
-     *
-     * @param array<mixed> $uploadedFiles
-     */
-    public function withUploadedFiles(array $uploadedFiles)
-    {
-        return new static($this->request->withUploadedFiles($uploadedFiles));
-    }
-
-    /**
-     * @internal
-     *
-     * @param array<mixed> $query
-     */
-    public function withQueryParams(array $query)
-    {
-        return new static($this->request->withQueryParams($query));
-    }
-
-    /**
-     * @internal
-     *
-     * @param array<mixed> $cookies
-     */
-    public function withCookieParams(array $cookies)
-    {
-        return new static($this->request->withCookieParams($cookies));
+        return new static($this->request->withAddedHeader($name, $value));
     }
 
     /**
@@ -316,11 +206,121 @@ class ServerRequestProxy implements ServerRequestInterface
 
     /**
      * @internal
+     */
+    public function withBody(StreamInterface $body)
+    {
+        return new static($this->request->withBody($body));
+    }
+
+    /**
+     * @internal
+     *
+     * @param array<mixed> $cookies
+     */
+    public function withCookieParams(array $cookies)
+    {
+        return new static($this->request->withCookieParams($cookies));
+    }
+
+    /**
+     * @internal
+     *
+     * @param string               $name
+     * @param array<string>|string $value
+     */
+    public function withHeader($name, $value)
+    {
+        return new static($this->request->withHeader($name, $value));
+    }
+
+    /**
+     * @internal
+     *
+     * @param string $method
+     */
+    public function withMethod($method)
+    {
+        return new static($this->request->withMethod($method));
+    }
+
+    /**
+     * @internal
      *
      * @param string $name
      */
     public function withoutAttribute($name)
     {
         return new static($this->request->withoutAttribute($name));
+    }
+
+    /**
+     * @internal
+     *
+     * @param string $name
+     */
+    public function withoutHeader($name)
+    {
+        return new static($this->request->withoutHeader($name));
+    }
+
+    /**
+     * @internal
+     *
+     * @param null|array<mixed>|object $data
+     */
+    public function withParsedBody($data)
+    {
+        return new static($this->request->withParsedBody($data));
+    }
+
+    /**
+     * @internal
+     *
+     * @param string $version
+     */
+    public function withProtocolVersion($version)
+    {
+        return new static($this->request->withProtocolVersion($version));
+    }
+
+    /**
+     * @internal
+     *
+     * @param array<mixed> $query
+     */
+    public function withQueryParams(array $query)
+    {
+        return new static($this->request->withQueryParams($query));
+    }
+
+    /**
+     * @internal
+     *
+     * @param mixed $requestTarget
+     */
+    public function withRequestTarget($requestTarget)
+    {
+        return new static($this->request->withRequestTarget($requestTarget));
+    }
+
+    /**
+     * @internal
+     *
+     * @param array<mixed> $uploadedFiles
+     */
+    public function withUploadedFiles(array $uploadedFiles)
+    {
+        return new static($this->request->withUploadedFiles($uploadedFiles));
+    }
+
+    /**
+     * @internal
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     *
+     * @param bool $preserveHost
+     */
+    public function withUri(UriInterface $uri, $preserveHost = false)
+    {
+        return new static($this->request->withUri($uri, $preserveHost));
     }
 }

@@ -19,47 +19,25 @@ use Tomrf\HtmxMessage\HtmxServerRequest;
  */
 final class HtmxServerRequestTest extends TestCase
 {
-    static private Psr17Factory $psr17Factory;
-    static private ServerRequestCreator $serverRequestCreator;
+    private static Psr17Factory $psr17Factory;
+    private static ServerRequestCreator $serverRequestCreator;
 
     public static function setUpBeforeClass(): void
     {
         static::$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
-        static::$serverRequestCreator  = new \Nyholm\Psr7Server\ServerRequestCreator(
-           static::$psr17Factory,
-           static::$psr17Factory,
-           static::$psr17Factory,
-           static::$psr17Factory
+        static::$serverRequestCreator = new \Nyholm\Psr7Server\ServerRequestCreator(
+            static::$psr17Factory,
+            static::$psr17Factory,
+            static::$psr17Factory,
+            static::$psr17Factory
         );
     }
 
-    private static function createServerRequest(string $method = 'GET', string $uri = '/', ?string $body = null): ServerRequestInterface
+    public function testNewInstanceFromNonHtmxRequest(): void
     {
-        return static::$serverRequestCreator->fromArrays(
-            [
-                'REQUEST_METHOD' => $method,
-                'REQUEST_URI' => $uri,
-                'SERVER_PROTOCOL' => '1.1',
-                'SERVER_NAME' => 'localhost',
-                'SERVER_PORT' => '80',
-                'REMOTE_ADDR' => '::1',
-                'REMOTE_PORT' => '58981',
-                'SERVER_ADDR' => '::1',
-            ],
-            [
-                'HX-Request' => 'true',
-                'Accept' => 'text/html',
-                'Accept-Charset' => 'utf-8',
-                'Accept-Language' => 'en-US,en;q=0.9',
-                'Cache-Control' => 'no-cache',
-                'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-            ],
-            $_COOKIE,
-            $_GET,
-            $_POST,
-            $_FILES,
-            $body
-
+        static::assertFalse(
+            (new HtmxServerRequest(static::createServerRequest()->withoutHeader('HX-Request')))
+                ->isHxRequest()
         );
     }
 
@@ -99,11 +77,32 @@ final class HtmxServerRequestTest extends TestCase
         static::assertSame('foo', $newRequest->getBody()->getContents());
     }
 
-    public function testNewInstanceFromNonHtmxRequest(): void
+    private static function createServerRequest(string $method = 'GET', string $uri = '/', ?string $body = null): ServerRequestInterface
     {
-        static::assertFalse(
-            (new HtmxServerRequest(static::createServerRequest()->withoutHeader('HX-Request')))
-                ->isHxRequest()
+        return static::$serverRequestCreator->fromArrays(
+            [
+                'REQUEST_METHOD' => $method,
+                'REQUEST_URI' => $uri,
+                'SERVER_PROTOCOL' => '1.1',
+                'SERVER_NAME' => 'localhost',
+                'SERVER_PORT' => '80',
+                'REMOTE_ADDR' => '::1',
+                'REMOTE_PORT' => '58981',
+                'SERVER_ADDR' => '::1',
+            ],
+            [
+                'HX-Request' => 'true',
+                'Accept' => 'text/html',
+                'Accept-Charset' => 'utf-8',
+                'Accept-Language' => 'en-US,en;q=0.9',
+                'Cache-Control' => 'no-cache',
+                'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            ],
+            $_COOKIE,
+            $_GET,
+            $_POST,
+            $_FILES,
+            $body
         );
     }
 }
