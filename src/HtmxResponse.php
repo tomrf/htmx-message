@@ -4,7 +4,30 @@ declare(strict_types=1);
 
 namespace Tomrf\HtmxMessage;
 
-class HtmxResponse extends ResponseProxy
+use Tomrf\HtmxMessage\Proxy\ResponseInterfaceProxy;
+
+/**
+ * HtmxResponse is a proxy for PSR-7 response objects implementing
+ * \Psr\Http\Message\ResponseInterface.
+ *
+ * You can safely wrap any ResponseInterface object, also those not
+ * responding to a htmx request, without affecting your application.
+ *
+ * HtmxResponse objects retains immutability in the same fashion as
+ * one would expect from a PSR-7 MessageInterface, returning a new object
+ * wrapping a new ResponseInterface instance whenever the HtmxResponse
+ * is changed.
+ *
+ * Example:
+ *
+ *     $response = new HtmxResponse($response);
+ *     $response = $response->withHxTrigger('myTrigger')
+ *         ->withRedirect('/user/redirected')
+ *         ->withHxPush(false);
+ *
+ *     // ...
+ */
+class HtmxResponse extends ResponseInterfaceProxy
 {
     public function getHxPush(): string
     {

@@ -12,10 +12,8 @@ use Tomrf\HtmxMessage\HtmxServerRequest;
 
 /**
  * @internal
- * @covers \Tomrf\HtmxMessage\HtmxResponse
- * @covers \Tomrf\HtmxMessage\HtmxServerRequest
- * @covers \Tomrf\HtmxMessage\ResponseProxy
- * @covers \Tomrf\HtmxMessage\ServerRequestProxy
+ * @cover
+ * @coversNothing
  */
 final class HtmxServerRequestTest extends TestCase
 {
