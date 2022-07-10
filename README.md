@@ -93,7 +93,30 @@ See [LICENSE](LICENSE) for more information.
    - [isHxHistoryRestoreRequest](#ishxhistoryrestorerequest)
    - [isHxRequest](#ishxrequest)
 
+
+***
+
 ### 📂 Tomrf\HtmxMessage\HtmxResponse::class
+
+HtmxResponse is a proxy for PSR-7 response objects implementing
+\Psr\Http\Message\ResponseInterface.
+
+You can safely wrap any ResponseInterface object, also those not
+responding to a htmx request, without affecting your application.
+
+HtmxResponse objects retains immutability in the same fashion as
+one would expect from a PSR-7 MessageInterface, returning a new object
+wrapping a new ResponseInterface instance whenever the HtmxResponse
+is changed.
+
+Example:
+
+    $response = new HtmxResponse($response);
+    $response = $response->withHxTrigger('myTrigger')
+        ->withRedirect('/user/redirected')
+        ->withHxPush(false);
+
+    // ...
 
 #### getHxPush()
 
@@ -305,7 +328,33 @@ public function withoutHxTriggerAfterSettle(): static
 public function withoutHxTriggerAfterSwap(): static
 ```
 
+
+***
+
 ### 📂 Tomrf\HtmxMessage\HtmxServerRequest::class
+
+HtmxServerRequest is a proxy for PSR-7 server request objects implementing
+\Psr\Http\Message\ServerRequestInterface.
+
+You can safely wrap any ServerRequestInterface object, also those not
+originating from htmx, without affecting your application.
+
+Check if the request originated from htmx using the isHxRequest() method.
+
+HtmxServerRequest objects retains immutability in the same fashion as
+one would expect from a PSR-7 MessageInterface, returning a new object
+wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest
+is changed.
+
+Example:
+
+    $request = new HtmxServerRequest($request);
+    if ($request->isHxRequest() && $request->isHxBoosted()) {
+        // htmx request from boosted client, respond accordingly
+    }
+
+    $userPrompt = $request->getHxPrompt();
+    // ...
 
 #### getHxCurrentUrl()
 
@@ -383,4 +432,4 @@ public function isHxRequest(): bool
 
 ***
 
-_Generated 2022-07-10T19:59:50+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-07-10T21:32:02+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
