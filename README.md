@@ -1,8 +1,8 @@
-# htmx-message - PHP PSR-7 proxy classes with convenience methods for htmx (htmx.org) requests and responses
+# htmx-message - PHP PSR-7 proxy classes with convenience methods for htmx requests and responses
 
 [![PHP Version Require](http://poser.pugx.org/tomrf/htmx-message/require/php?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![Latest Stable Version](http://poser.pugx.org/tomrf/htmx-message/v?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![License](http://poser.pugx.org/tomrf/htmx-message/license?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message)
 
-PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for `htmx`
+PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for [`htmx`](htmx.org)
 with convenience methods for all special htmx headers (`HX-*`) in request and
 response objects.
 
@@ -432,4 +432,4 @@ public function isHxRequest(): bool
 
 ***
 
-_Generated 2022-07-10T21:32:02+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-07-10T21:36:04+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_

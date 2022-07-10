@@ -1,7 +1,7 @@
 {
     "name": "tomrf/htmx-message",
     "type": "library",
-    "description": "PHP PSR-7 proxy classes with convenience methods for htmx  requests and responses",
+    "description": "PHP PSR-7 proxy classes with convenience methods for htmx requests and responses",
     "keywords": [ "htmx", "http-message", "psr-7", "server-request", "http-request", "http-response" ],
     "homepage": "http://github.com/tomrf/htmx-message",
     "license": "MIT",
