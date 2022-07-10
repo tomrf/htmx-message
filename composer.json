@@ -102,6 +102,9 @@
         ],
         "clean": [
             "rm -rf vendor/ .phpunit.cache .php-cs-fixer.cache"
+        ],
+        "readme": [
+            "readme-gen ./ ./.readme.template.md"
         ]
     }
 }

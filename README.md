@@ -1,4 +1,4 @@
-# htmx-message - tomrf/htmx-message
+# htmx-message - PHP PSR-7 proxy classes with convenience methods for htmx (htmx.org) requests and responses
 
 [![PHP Version Require](http://poser.pugx.org/tomrf/htmx-message/require/php?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![Latest Stable Version](http://poser.pugx.org/tomrf/htmx-message/v?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![License](http://poser.pugx.org/tomrf/htmx-message/license?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message)
 
@@ -7,6 +7,8 @@ with convenience methods for all special htmx headers (`HX-*`) in request and
 response objects.
 
 See [the 📔 documentation](#documentation) for quick overview of relevant methods.
+
+📔 [Go to documentation](#documentation)
 
 ## Installation
 Installation via composer:
@@ -47,56 +49,56 @@ See [LICENSE](LICENSE) for more information.
 
 ## Documentation
  - [Tomrf\HtmxMessage\HtmxResponse](#-tomrfhtmxmessagehtmxresponseclass)
-   - [hasHxRedirect](#hashxredirect)
-   - [getHxRedirect](#gethxredirect)
-   - [withHxRedirect](#withhxredirect)
-   - [withoutHxRedirect](#withouthxredirect)
-   - [hasHxTrigger](#hashxtrigger)
-   - [getHxTrigger](#gethxtrigger)
-   - [withHxTrigger](#withhxtrigger)
-   - [withAddedHxTrigger](#withaddedhxtrigger)
-   - [withoutHxTrigger](#withouthxtrigger)
-   - [hasHxTriggerAfterSettle](#hashxtriggeraftersettle)
-   - [getHxTriggerAfterSettle](#gethxtriggeraftersettle)
-   - [withHxTriggerAfterSettle](#withhxtriggeraftersettle)
-   - [withAddedHxTriggerAfterSettle](#withaddedhxtriggeraftersettle)
-   - [withoutHxTriggerAfterSettle](#withouthxtriggeraftersettle)
-   - [hasHxTriggerAfterSwap](#hashxtriggerafterswap)
-   - [getHxTriggerAfterSwap](#gethxtriggerafterswap)
-   - [withHxTriggerAfterSwap](#withhxtriggerafterswap)
-   - [withAddedHxTriggerAfterSwap](#withaddedhxtriggerafterswap)
-   - [withoutHxTriggerAfterSwap](#withouthxtriggerafterswap)
-   - [hasHxRefresh](#hashxrefresh)
-   - [withHxRefresh](#withhxrefresh)
-   - [withoutHxRefresh](#withouthxrefresh)
-   - [hasHxRetarget](#hashxretarget)
-   - [getHxRetarget](#gethxretarget)
-   - [withHxRetarget](#withhxretarget)
-   - [withoutHxRetarget](#withouthxretarget)
-   - [hasHxPush](#hashxpush)
    - [getHxPush](#gethxpush)
-   - [withHxPush](#withhxpush)
-   - [withoutHxPush](#withouthxpush)
- - [Tomrf\HtmxMessage\HtmxServerRequest](#-tomrfhtmxmessagehtmxserverrequestclass)
-   - [isHxRequest](#ishxrequest)
-   - [isHxBoosted](#ishxboosted)
-   - [isHxHistoryRestoreRequest](#ishxhistoryrestorerequest)
+   - [getHxRedirect](#gethxredirect)
+   - [getHxRetarget](#gethxretarget)
+   - [getHxTrigger](#gethxtrigger)
+   - [getHxTriggerAfterSettle](#gethxtriggeraftersettle)
+   - [getHxTriggerAfterSwap](#gethxtriggerafterswap)
+   - [hasHxPush](#hashxpush)
+   - [hasHxRedirect](#hashxredirect)
+   - [hasHxRefresh](#hashxrefresh)
+   - [hasHxRetarget](#hashxretarget)
    - [hasHxTrigger](#hashxtrigger)
-   - [hasHxTriggerName](#hashxtriggername)
-   - [hasHxTarget](#hashxtarget)
-   - [hasHxPrompt](#hashxprompt)
+   - [hasHxTriggerAfterSettle](#hashxtriggeraftersettle)
+   - [hasHxTriggerAfterSwap](#hashxtriggerafterswap)
+   - [withAddedHxTrigger](#withaddedhxtrigger)
+   - [withAddedHxTriggerAfterSettle](#withaddedhxtriggeraftersettle)
+   - [withAddedHxTriggerAfterSwap](#withaddedhxtriggerafterswap)
+   - [withHxPush](#withhxpush)
+   - [withHxRedirect](#withhxredirect)
+   - [withHxRefresh](#withhxrefresh)
+   - [withHxRetarget](#withhxretarget)
+   - [withHxTrigger](#withhxtrigger)
+   - [withHxTriggerAfterSettle](#withhxtriggeraftersettle)
+   - [withHxTriggerAfterSwap](#withhxtriggerafterswap)
+   - [withoutHxPush](#withouthxpush)
+   - [withoutHxRedirect](#withouthxredirect)
+   - [withoutHxRefresh](#withouthxrefresh)
+   - [withoutHxRetarget](#withouthxretarget)
+   - [withoutHxTrigger](#withouthxtrigger)
+   - [withoutHxTriggerAfterSettle](#withouthxtriggeraftersettle)
+   - [withoutHxTriggerAfterSwap](#withouthxtriggerafterswap)
+ - [Tomrf\HtmxMessage\HtmxServerRequest](#-tomrfhtmxmessagehtmxserverrequestclass)
    - [getHxCurrentUrl](#gethxcurrenturl)
+   - [getHxPrompt](#gethxprompt)
+   - [getHxTarget](#gethxtarget)
    - [getHxTrigger](#gethxtrigger)
    - [getHxTriggerName](#gethxtriggername)
-   - [getHxTarget](#gethxtarget)
-   - [getHxPrompt](#gethxprompt)
+   - [hasHxPrompt](#hashxprompt)
+   - [hasHxTarget](#hashxtarget)
+   - [hasHxTrigger](#hashxtrigger)
+   - [hasHxTriggerName](#hashxtriggername)
+   - [isHxBoosted](#ishxboosted)
+   - [isHxHistoryRestoreRequest](#ishxhistoryrestorerequest)
+   - [isHxRequest](#ishxrequest)
 
 ### 📂 Tomrf\HtmxMessage\HtmxResponse::class
 
-#### hasHxRedirect()
+#### getHxPush()
 
 ```php
-public function hasHxRedirect(): bool
+public function getHxPush(): string
 ```
 
 #### getHxRedirect()
@@ -105,18 +107,58 @@ public function hasHxRedirect(): bool
 public function getHxRedirect(): string
 ```
 
-#### withHxRedirect()
+#### getHxRetarget()
 
 ```php
-public function withHxRedirect(
-    string $url
-): static
+public function getHxRetarget(): string
 ```
 
-#### withoutHxRedirect()
+#### getHxTrigger()
 
 ```php
-public function withoutHxRedirect(): static
+public function getHxTrigger(): array
+
+@return   array
+```
+
+#### getHxTriggerAfterSettle()
+
+```php
+public function getHxTriggerAfterSettle(): array
+
+@return   array
+```
+
+#### getHxTriggerAfterSwap()
+
+```php
+public function getHxTriggerAfterSwap(): array
+
+@return   array
+```
+
+#### hasHxPush()
+
+```php
+public function hasHxPush(): bool
+```
+
+#### hasHxRedirect()
+
+```php
+public function hasHxRedirect(): bool
+```
+
+#### hasHxRefresh()
+
+```php
+public function hasHxRefresh(): bool
+```
+
+#### hasHxRetarget()
+
+```php
+public function hasHxRetarget(): bool
 ```
 
 #### hasHxTrigger()
@@ -125,19 +167,16 @@ public function withoutHxRedirect(): static
 public function hasHxTrigger(): bool
 ```
 
-#### getHxTrigger()
+#### hasHxTriggerAfterSettle()
 
 ```php
-public function getHxTrigger(): array
+public function hasHxTriggerAfterSettle(): bool
 ```
 
-#### withHxTrigger()
+#### hasHxTriggerAfterSwap()
 
 ```php
-public function withHxTrigger(
-    string $trigger,
-    mixed $argument = null
-): static
+public function hasHxTriggerAfterSwap(): bool
 ```
 
 #### withAddedHxTrigger()
@@ -149,64 +188,10 @@ public function withAddedHxTrigger(
 ): static
 ```
 
-#### withoutHxTrigger()
-
-```php
-public function withoutHxTrigger(): static
-```
-
-#### hasHxTriggerAfterSettle()
-
-```php
-public function hasHxTriggerAfterSettle(): bool
-```
-
-#### getHxTriggerAfterSettle()
-
-```php
-public function getHxTriggerAfterSettle(): array
-```
-
-#### withHxTriggerAfterSettle()
-
-```php
-public function withHxTriggerAfterSettle(
-    string $trigger,
-    mixed $argument =
-): static
-```
-
 #### withAddedHxTriggerAfterSettle()
 
 ```php
 public function withAddedHxTriggerAfterSettle(
-    string $trigger,
-    mixed $argument = null
-): static
-```
-
-#### withoutHxTriggerAfterSettle()
-
-```php
-public function withoutHxTriggerAfterSettle(): static
-```
-
-#### hasHxTriggerAfterSwap()
-
-```php
-public function hasHxTriggerAfterSwap(): bool
-```
-
-#### getHxTriggerAfterSwap()
-
-```php
-public function getHxTriggerAfterSwap(): array
-```
-
-#### withHxTriggerAfterSwap()
-
-```php
-public function withHxTriggerAfterSwap(
     string $trigger,
     mixed $argument = null
 ): static
@@ -221,40 +206,26 @@ public function withAddedHxTriggerAfterSwap(
 ): static
 ```
 
-#### withoutHxTriggerAfterSwap()
+#### withHxPush()
 
 ```php
-public function withoutHxTriggerAfterSwap(): static
+public function withHxPush(
+    string|bool $url
+): static
 ```
 
-#### hasHxRefresh()
+#### withHxRedirect()
 
 ```php
-public function hasHxRefresh(): bool
+public function withHxRedirect(
+    string $url
+): static
 ```
 
 #### withHxRefresh()
 
 ```php
 public function withHxRefresh(): static
-```
-
-#### withoutHxRefresh()
-
-```php
-public function withoutHxRefresh(): static
-```
-
-#### hasHxRetarget()
-
-```php
-public function hasHxRetarget(): bool
-```
-
-#### getHxRetarget()
-
-```php
-public function getHxRetarget(): string
 ```
 
 #### withHxRetarget()
@@ -265,29 +236,30 @@ public function withHxRetarget(
 ): static
 ```
 
-#### withoutHxRetarget()
+#### withHxTrigger()
 
 ```php
-public function withoutHxRetarget(): static
+public function withHxTrigger(
+    string $trigger,
+    mixed $argument = null
+): static
 ```
 
-#### hasHxPush()
+#### withHxTriggerAfterSettle()
 
 ```php
-public function hasHxPush(): bool
+public function withHxTriggerAfterSettle(
+    string $trigger,
+    mixed $argument = null
+): static
 ```
 
-#### getHxPush()
+#### withHxTriggerAfterSwap()
 
 ```php
-public function getHxPush(): string
-```
-
-#### withHxPush()
-
-```php
-public function withHxPush(
-    string|bool $url
+public function withHxTriggerAfterSwap(
+    string $trigger,
+    mixed $argument = null
 ): static
 ```
 
@@ -297,54 +269,60 @@ public function withHxPush(
 public function withoutHxPush(): static
 ```
 
+#### withoutHxRedirect()
+
+```php
+public function withoutHxRedirect(): static
+```
+
+#### withoutHxRefresh()
+
+```php
+public function withoutHxRefresh(): static
+```
+
+#### withoutHxRetarget()
+
+```php
+public function withoutHxRetarget(): static
+```
+
+#### withoutHxTrigger()
+
+```php
+public function withoutHxTrigger(): static
+```
+
+#### withoutHxTriggerAfterSettle()
+
+```php
+public function withoutHxTriggerAfterSettle(): static
+```
+
+#### withoutHxTriggerAfterSwap()
+
+```php
+public function withoutHxTriggerAfterSwap(): static
+```
+
 ### 📂 Tomrf\HtmxMessage\HtmxServerRequest::class
-
-#### isHxRequest()
-
-```php
-public function isHxRequest(): bool
-```
-
-#### isHxBoosted()
-
-```php
-public function isHxBoosted(): bool
-```
-
-#### isHxHistoryRestoreRequest()
-
-```php
-public function isHxHistoryRestoreRequest(): bool
-```
-
-#### hasHxTrigger()
-
-```php
-public function hasHxTrigger(): bool
-```
-
-#### hasHxTriggerName()
-
-```php
-public function hasHxTriggerName(): bool
-```
-
-#### hasHxTarget()
-
-```php
-public function hasHxTarget(): bool
-```
-
-#### hasHxPrompt()
-
-```php
-public function hasHxPrompt(): bool
-```
 
 #### getHxCurrentUrl()
 
 ```php
 public function getHxCurrentUrl(): string
+```
+
+#### getHxPrompt()
+
+```php
+public function getHxPrompt(): string
+```
+
+#### getHxTarget()
+
+```php
+public function getHxTarget(): string
 ```
 
 #### getHxTrigger()
@@ -359,18 +337,50 @@ public function getHxTrigger(): string
 public function getHxTriggerName(): string
 ```
 
-#### getHxTarget()
+#### hasHxPrompt()
 
 ```php
-public function getHxTarget(): string
+public function hasHxPrompt(): bool
 ```
 
-#### getHxPrompt()
+#### hasHxTarget()
 
 ```php
-public function getHxPrompt(): string
+public function hasHxTarget(): bool
 ```
+
+#### hasHxTrigger()
+
+```php
+public function hasHxTrigger(): bool
+```
+
+#### hasHxTriggerName()
+
+```php
+public function hasHxTriggerName(): bool
+```
+
+#### isHxBoosted()
+
+```php
+public function isHxBoosted(): bool
+```
+
+#### isHxHistoryRestoreRequest()
+
+```php
+public function isHxHistoryRestoreRequest(): bool
+```
+
+#### isHxRequest()
+
+```php
+public function isHxRequest(): bool
+```
+
+
 
 ***
 
-_Generated 2022-07-10T00:25:55+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-07-10T19:59:50+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
