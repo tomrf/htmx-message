@@ -11,6 +11,9 @@ return (new PhpCsFixer\Config())
         '@PHP80Migration' => true,
         '@PHP80Migration:risky' => true,
         'final_internal_class' => false,
+        'ordered_class_elements' => [
+            'sort_algorithm' => 'alpha'
+        ],
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
