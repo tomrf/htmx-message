@@ -10,11 +10,13 @@ response objects.
 
 `HtmxServerRequest` is a proxy for PSR-7 server request objects implementing `\Psr\Http\Message\ServerRequestInterface`.
 
-You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, also those not originating from htmx, without affecting your application.
+You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, also those not originating from [`htmx`](htmx.org), without affecting your application.
 
 `HtmxResponse` and `HtmxServerRequest` objects retains immutability in the same fashion as one would expect from a PSR-7 `MessageInterface`, returning a new object wrapping a new `ResponseInterface` instance whenever the `HtmxResponse` is changed.
 
 HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed.
+
+Conforms to [`htmx`](htmx.org) version 1.8.x (latest) as per 2022-12.
 
 📔 [Go to documentation](#documentation)
 
@@ -440,4 +442,4 @@ public function isHxRequest(): bool
 
 ***
 
-_Generated 2022-12-12T17:28:26+01:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-12-12T17:40:41+01:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
