@@ -25,6 +25,7 @@
             "You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, also those not originating from htmx, without affecting your application.",
             "",
             "`HtmxResponse` and `HtmxServerRequest` objects retains immutability in the same fashion as one would expect from a PSR-7 `MessageInterface`, returning a new object wrapping a new `ResponseInterface` instance whenever the `HtmxResponse` is changed.",
+            "",
             "HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed."
         ],
         "example": [
