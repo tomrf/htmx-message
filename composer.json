@@ -18,8 +18,13 @@
             "with convenience methods for all special htmx headers (`HX-*`) in request and",
             "response objects.",
             "",
-            "See the [📔 documentation](#documentation) for quick overview of relevant methods."
-
+            "`HtmxResponse` is a proxy for PSR-7 response objects implementing `\\Psr\\Http\\Message\\ResponseInterface`.",
+            "",
+            "`HtmxServerRequest` is a proxy for PSR-7 server request objects implementing `\\Psr\\Http\\Message\\ServerRequestInterface.",
+            "",
+            "You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, also those not originating from htmx, without affecting your application.",
+            "`HtmxResponse` and `HtmxServerRequest` objects retains immutability in the same fashion as one would expect from a PSR-7 `MessageInterface`, returning a new object wrapping a new `ResponseInterface` instance whenever the `HtmxResponse` is changed.",
+            "HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed."
         ],
         "example": [
             "$request = new HtmxRequest($request);     // PSR-7 `ServerRequestInterface`",
