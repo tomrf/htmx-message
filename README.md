@@ -6,7 +6,13 @@ PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for [`htmx`
 with convenience methods for all special htmx headers (`HX-*`) in request and
 response objects.
 
-See [the 📔 documentation](#documentation) for quick overview of relevant methods.
+`HtmxResponse` is a proxy for PSR-7 response objects implementing `\Psr\Http\Message\ResponseInterface`.
+
+`HtmxServerRequest` is a proxy for PSR-7 server request objects implementing `\Psr\Http\Message\ServerRequestInterface.
+
+You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, also those not originating from htmx, without affecting your application.
+`HtmxResponse` and `HtmxServerRequest` objects retains immutability in the same fashion as one would expect from a PSR-7 `MessageInterface`, returning a new object wrapping a new `ResponseInterface` instance whenever the `HtmxResponse` is changed.
+HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed.
 
 📔 [Go to documentation](#documentation)
 
@@ -17,9 +23,9 @@ Installation via composer:
 composer require tomrf/htmx-message
 ```
 
-## Usage example
+## Usage
 ```php
-$request = new HtmxRequest($request);      // object implementing PSR-7 `ServerRequestInterface`
+$request = new HtmxRequest($request);     // PSR-7 `ServerRequestInterface`
 
 if ($request->isHxRequest() && $request->isHxBoosted()) {
     $layout = 'ajax.layout';
@@ -27,7 +33,7 @@ if ($request->isHxRequest() && $request->isHxBoosted()) {
 
 [...]
 
-$response = new HtmxResponse($response);   // object implementing PSR-7 `ResponseInterface`
+$response = new HtmxResponse($response);  // PSR-7 `ResponseInterface`
 
 $response = $response->withHxTrigger('aSimpleTrigger')
     ->withAddedHxTrigger('triggerWithParams', ['arg' => true, 'arg2' => 7])
@@ -432,4 +438,4 @@ public function isHxRequest(): bool
 
 ***
 
-_Generated 2022-07-10T21:36:04+02:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2022-12-12T17:23:45+01:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
