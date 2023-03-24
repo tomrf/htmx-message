@@ -9,39 +9,13 @@ use Tomrf\HtmxMessage\HtmxResponse;
 
 /**
  * @internal
- * @cover HtmxResponse
- * @coversNothing
+ *
+ * @covers \Tomrf\HtmxMessage\HtmxResponse
+ * @covers \Tomrf\HtmxMessage\Proxy\AbstractMessageInterfaceProxy
+ * @covers \Tomrf\HtmxMessage\Proxy\ResponseInterfaceProxy
  */
 final class HtmxResponseTest extends TestCase
 {
-    public function testNewInstance(): void
-    {
-        $response = new HtmxResponse(
-            new \Nyholm\Psr7\Response(),
-        );
-        static::assertInstanceOf(HtmxResponse::class, $response);
-    }
-
-    public function testHtmxTrigger(): void
-    {
-        $response = new HtmxResponse(
-            new \Nyholm\Psr7\Response(),
-        );
-        $response = $response->withHxTrigger('test');
-
-        static::assertTrue($response->hasHeader('HX-Trigger'));
-
-        static::assertSame(
-            json_encode(['test' => null]),
-            $response->getHeaderLine('HX-Trigger')
-        );
-
-        static::assertSame(
-            ['test' => null],
-            $response->getHxTrigger()
-        );
-    }
-
     public function testHtmxAddedTriggerAndValue(): void
     {
         $response = new HtmxResponse(
@@ -49,7 +23,6 @@ final class HtmxResponseTest extends TestCase
         );
         $response = $response->withHxTrigger('first', 'value-first');
         $response = $response->withAddedHxTrigger('added', 'value-added');
-
 
         static::assertTrue($response->hasHeader('HX-Trigger'));
 
@@ -79,6 +52,22 @@ final class HtmxResponseTest extends TestCase
         );
     }
 
+    public function testHtmxPush(): void
+    {
+        $response = new HtmxResponse(
+            new \Nyholm\Psr7\Response(),
+        );
+        $response = $response->withHxPush('url');
+
+        static::assertTrue($response->hasHeader('HX-Push'));
+
+        static::assertSame(
+            'url',
+            $response->getHeaderLine('HX-Push')
+        );
+        static::assertSame('url', $response->getHxPush());
+    }
+
     public function testHtmxRefresh(): void
     {
         $response = new HtmxResponse(
@@ -100,22 +89,33 @@ final class HtmxResponseTest extends TestCase
         static::assertTrue($response->hasHeader('HX-Retarget'));
         static::assertSame('selector', $response->getHeaderLine('HX-Retarget'));
         static::assertSame('selector', $response->getHxRetarget());
-
     }
 
-    public function testHtmxPush(): void
+    public function testHtmxTrigger(): void
     {
         $response = new HtmxResponse(
             new \Nyholm\Psr7\Response(),
         );
-        $response = $response->withHxPush('url');
+        $response = $response->withHxTrigger('test');
 
-        static::assertTrue($response->hasHeader('HX-Push'));
+        static::assertTrue($response->hasHeader('HX-Trigger'));
 
         static::assertSame(
-            'url',
-            $response->getHeaderLine('HX-Push')
+            json_encode(['test' => null]),
+            $response->getHeaderLine('HX-Trigger')
         );
-        static::assertSame('url', $response->getHxPush());
+
+        static::assertSame(
+            ['test' => null],
+            $response->getHxTrigger()
+        );
+    }
+
+    public function testNewInstance(): void
+    {
+        $response = new HtmxResponse(
+            new \Nyholm\Psr7\Response(),
+        );
+        static::assertInstanceOf(HtmxResponse::class, $response);
     }
 }
