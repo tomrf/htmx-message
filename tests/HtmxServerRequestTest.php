@@ -77,6 +77,73 @@ final class HtmxServerRequestTest extends TestCase
         static::assertSame('foo', $newRequest->getBody()->getContents());
     }
 
+    public function testNewInstanceFromServerRequestWithBody(): void
+    {
+        $serverRequest = static::createServerRequest('POST', '/', 'foo');
+        $htmxRequest = new HtmxServerRequest($serverRequest);
+
+        static::assertInstanceOf(ServerRequestInterface::class, $serverRequest);
+        static::assertInstanceOf(ServerRequestInterface::class, $htmxRequest);
+
+        // assert isHxRequest
+        static::assertTrue($htmxRequest->isHxRequest());
+
+        // assert request method
+        static::assertSame('POST', $serverRequest->getMethod());
+        static::assertSame($serverRequest->getMethod(), $htmxRequest->getMethod());
+
+        // assert request uri path
+        static::assertSame('/', $serverRequest->getUri()->getPath());
+        static::assertSame($serverRequest->getUri(), $htmxRequest->getUri());
+
+        // assert protocol version change
+        static::assertSame('1.1', $htmxRequest->getProtocolVersion());
+        $newRequest = $htmxRequest->withProtocolVersion('1.0');
+        static::assertSame('1.0', $newRequest->getProtocolVersion());
+        static::assertNotSame($htmxRequest, $newRequest);
+
+        // assert adding attribute
+        $newRequest = $htmxRequest->withAttribute('attr', 123);
+        static::assertSame(123, $newRequest->getAttribute('attr'));
+        static::assertNotSame($htmxRequest, $newRequest);
+
+        // assert manipulating body content
+        $newRequest->getBody()->write('bar');
+        $newRequest->getBody()->rewind();
+        static::assertSame('foobar', $newRequest->getBody()->getContents());
+    }
+
+    public function testNewInstanceFromServerRequestWithBodyAndQueryParams(): void
+    {
+        $serverRequest = static::createServerRequest('POST', '/?foo=bar', 'foo=bar');
+        $htmxRequest = new HtmxServerRequest($serverRequest);
+
+        static::assertInstanceOf(ServerRequestInterface::class, $serverRequest);
+        static::assertInstanceOf(ServerRequestInterface::class, $htmxRequest);
+
+        // assert isHxRequest
+        static::assertTrue($htmxRequest->isHxRequest());
+
+        // assert request method
+        static::assertSame('POST', $serverRequest->getMethod());
+        static::assertSame($serverRequest->getMethod(), $htmxRequest->getMethod());
+
+        // assert request uri path
+        static::assertSame('/', $serverRequest->getUri()->getPath());
+        static::assertSame($serverRequest->getUri(), $htmxRequest->getUri());
+
+        // assert protocol version change
+        static::assertSame('1.1', $htmxRequest->getProtocolVersion());
+        $newRequest = $htmxRequest->withProtocolVersion('1.0');
+        static::assertSame('1.0', $newRequest->getProtocolVersion());
+        static::assertNotSame($htmxRequest, $newRequest);
+
+        // assert adding attribute
+        $newRequest = $htmxRequest->withAttribute('attr', 123);
+        static::assertSame(123, $newRequest->getAttribute('attr'));
+        static::assertNotSame($htmxRequest, $newRequest);
+    }
+
     private static function createServerRequest(string $method = 'GET', string $uri = '/', ?string $body = null): ServerRequestInterface
     {
         return static::$serverRequestCreator->fromArrays(
