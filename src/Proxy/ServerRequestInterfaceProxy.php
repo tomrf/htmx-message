@@ -17,9 +17,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     /** @var ServerRequestInterface */
     protected $message;
 
-    /**
-     * @internal
-     */
     final public function __construct(
         ServerRequestInterface $message
     ) {
@@ -225,6 +222,7 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
 
     /**
      * @internal
+     *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param bool $preserveHost
