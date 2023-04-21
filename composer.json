@@ -78,13 +78,13 @@
     },
     "scripts": {
         "phpunit": [
-            "XDEBUG_MODE=coverage phpunit -c .phpunit.dist.xml --colors=auto --coverage-text --stderr"
+            "phpunit -c .phpunit.dist.xml --colors=auto --no-coverage --stderr"
         ],
         "cs-fixer": [
             "php-cs-fixer fix --allow-risky=yes --diff --verbose src/"
         ],
         "phpstan": [
-            "phpstan analyze --level max --xdebug src/"
+            "phpstan analyze --level max src/"
         ],
         "phpmd": [
             "phpmd src/ ansi .phpmd-ruleset.xml"
@@ -97,13 +97,17 @@
         ],
         "test-coverage": [
             "@putenv XDEBUG_MODE=coverage",
-            "@phpunit --coverage-xml .phpunit.cache/code-coverage/xml",
-            "ls -al .phpunit.cache/code-coverage/xml"
+            "@phpunit --coverage-text"
         ],
         "test-coverage-html": [
             "@putenv XDEBUG_MODE=coverage",
             "@phpunit --coverage-html .phpunit.cache/code-coverage/html",
             "php -S localhost:0 -t .phpunit.cache/code-coverage/html"
+        ],
+        "test-coverage-xml": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@phpunit --coverage-xml .phpunit.cache/code-coverage/xml",
+            "ls -al .phpunit.cache/code-coverage/xml"
         ],
         "check": [
             "@test",
