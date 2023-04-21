@@ -203,7 +203,7 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     /**
      * @internal
      *
-     * @param mixed $requestTarget
+     * @param string $requestTarget
      */
     public function withRequestTarget($requestTarget)
     {
