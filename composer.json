@@ -28,7 +28,7 @@
             "",
             "HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed.",
             "",
-            "Conforms to [`htmx`](htmx.org) version 1.8.x (latest) as per 2023-03."
+            "Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-04-11."
         ],
         "example": [
             "$request = new HtmxRequest($request);     // PSR-7 `ServerRequestInterface`",
@@ -55,9 +55,9 @@
         "psr/http-message": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^10.1",
         "phpstan/phpstan": "^1.10",
-        "friendsofphp/php-cs-fixer": "^3.8",
+        "friendsofphp/php-cs-fixer": "^3.16",
         "phpmd/phpmd": "^2.12",
         "bmitch/churn-php": "^1.7",
         "roave/security-advisories": "dev-latest",
@@ -93,26 +93,28 @@
             "churn run src/ | tail -n +7"
         ],
         "test": [
-            "@phpunit",
-            "@phpmd",
-            "@phpstan",
-            "@churn"
+            "@phpunit"
         ],
-        "coverage": [
+        "test-coverage": [
             "@putenv XDEBUG_MODE=coverage",
             "@phpunit --coverage-xml .phpunit.cache/code-coverage/xml",
             "ls -al .phpunit.cache/code-coverage/xml"
-
         ],
-        "coverage-html": [
+        "test-coverage-html": [
             "@putenv XDEBUG_MODE=coverage",
             "@phpunit --coverage-html .phpunit.cache/code-coverage/html",
             "php -S localhost:0 -t .phpunit.cache/code-coverage/html"
         ],
+        "check": [
+            "@test",
+            "@phpmd",
+            "@phpstan",
+            "@churn"
+        ],
         "clean": [
             "rm -rf vendor/ .phpunit.cache .php-cs-fixer.cache"
         ],
-        "readme": [
+        "readme-gen": [
             "readme-gen ./ ./.readme.template.md"
         ]
     }
