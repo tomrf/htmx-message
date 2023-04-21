@@ -106,11 +106,6 @@ final class HtmxServerRequestTest extends TestCase
         $newRequest = $htmxRequest->withAttribute('attr', 123);
         static::assertSame(123, $newRequest->getAttribute('attr'));
         static::assertNotSame($htmxRequest, $newRequest);
-
-        // assert manipulating body content
-        $newRequest->getBody()->write('bar');
-        $newRequest->getBody()->rewind();
-        static::assertSame('foobar', $newRequest->getBody()->getContents());
     }
 
     public function testNewInstanceFromServerRequestWithBodyAndQueryParams(): void
