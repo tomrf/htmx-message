@@ -28,7 +28,7 @@
             "",
             "HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed.",
             "",
-            "Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-04-11."
+            "Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-06-01."
         ],
         "example": [
             "$request = new HtmxRequest($request);     // PSR-7 `ServerRequestInterface`",
