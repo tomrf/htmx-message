@@ -16,7 +16,7 @@ You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, 
 
 HtmxServerRequest objects retains immutability in the same fashion as one would expect from a PSR-7 MessageInterface, returning a new object wrapping a new ServerRequestInterface instance whenever the HtmxServerRequest is changed.
 
-Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-06-01.
+Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-08-01.
 
 📔 [Go to documentation](#documentation)
 
@@ -451,4 +451,4 @@ public function __construct(
 
 ***
 
-_Generated 2023-05-30T10:59:14+00:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2023-08-02T13:02:20+00:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
