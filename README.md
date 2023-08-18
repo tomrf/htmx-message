@@ -2,7 +2,7 @@
 
 [![PHP Version Require](http://poser.pugx.org/tomrf/htmx-message/require/php?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![Latest Stable Version](http://poser.pugx.org/tomrf/htmx-message/v?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message) [![License](http://poser.pugx.org/tomrf/htmx-message/license?style=flat-square)](https://packagist.org/packages/tomrf/htmx-message)
 
-PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for [`htmx`](htmx.org)
+PSR-7 `ServerRequestInterface` and `ResponseInterface` proxy classes for [`htmx`](https://htmx.org)
 with convenience methods for all special htmx headers (`HX-*`) in request and
 response objects.
 
@@ -14,7 +14,7 @@ You can safely wrap any `ResponseInterface` or `ServerRequestInterface` object, 
 
 `HtmxResponse` and `HtmxServerRequest` objects retains immutability in the same fashion as one would expect from a PSR-7 `MessageInterface`, returning a new object wrapping a new `ResponseInterface` instance whenever the `HtmxResponse` is changed.
 
-Conforms to [`htmx`](htmx.org) version 1.9.x (latest) as per 2023-08-01.
+Conforms to [`htmx`](https://htmx.org) version 1.9.x (latest) as per 2023-08-01.
 
 📔 [Go to documentation](#documentation)
 
@@ -449,4 +449,4 @@ public function __construct(
 
 ***
 
-_Generated 2023-08-18T12:42:45+00:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
+_Generated 2023-08-18T12:46:49+00:00 using 📚[tomrf/readme-gen](https://packagist.org/packages/tomrf/readme-gen)_
