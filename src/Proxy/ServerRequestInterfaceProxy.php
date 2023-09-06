@@ -9,8 +9,6 @@ use Psr\Http\Message\UriInterface;
 
 /**
  * Proxy wrapping ServerRequestInterface.
- *
- * @internal
  */
 class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implements ServerRequestInterface
 {
@@ -27,8 +25,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param string     $name
      * @param null|mixed $default
      */
@@ -38,8 +34,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @return array<mixed>
      */
     public function getAttributes()
@@ -48,8 +42,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @return array<mixed>
      */
     public function getCookieParams()
@@ -57,17 +49,12 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
         return $this->message->getCookieParams();
     }
 
-    /**
-     * @internal
-     */
     public function getMethod()
     {
         return $this->message->getMethod();
     }
 
     /**
-     * @internal
-     *
      * @return null|array<mixed>|object
      */
     public function getParsedBody()
@@ -76,8 +63,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @return array<mixed>
      */
     public function getQueryParams()
@@ -85,25 +70,17 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
         return $this->message->getQueryParams();
     }
 
-    /**
-     * @internal
-     */
     public function getRequest(): ServerRequestInterface
     {
         return $this->message;
     }
 
-    /**
-     * @internal
-     */
     public function getRequestTarget()
     {
         return $this->message->getRequestTarget();
     }
 
     /**
-     * @internal
-     *
      * @return array<mixed>
      */
     public function getServerParams()
@@ -112,8 +89,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @return array<mixed>
      */
     public function getUploadedFiles()
@@ -121,17 +96,12 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
         return $this->message->getUploadedFiles();
     }
 
-    /**
-     * @internal
-     */
     public function getUri()
     {
         return $this->message->getUri();
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      * @param mixed  $value
      */
@@ -141,8 +111,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param array<mixed> $cookies
      */
     public function withCookieParams(array $cookies)
@@ -151,8 +119,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param string $method
      */
     public function withMethod($method)
@@ -161,8 +127,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      */
     public function withoutAttribute($name)
@@ -171,8 +135,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param null|array<mixed>|object $data
      */
     public function withParsedBody($data)
@@ -181,8 +143,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param string $version
      */
     public function withProtocolVersion($version)
@@ -191,8 +151,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param array<mixed> $query
      */
     public function withQueryParams(array $query)
@@ -201,8 +159,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param string $requestTarget
      */
     public function withRequestTarget($requestTarget)
@@ -211,8 +167,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @param array<mixed> $uploadedFiles
      */
     public function withUploadedFiles(array $uploadedFiles)
@@ -221,8 +175,6 @@ class ServerRequestInterfaceProxy extends AbstractMessageInterfaceProxy implemen
     }
 
     /**
-     * @internal
-     *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param bool $preserveHost

@@ -11,8 +11,6 @@ use Psr\Http\Message\StreamInterface;
  * Abstract proxy class wrapping MessageInterface.
  *
  * @phpstan-consistent-constructor
- *
- * @internal
  */
 abstract class AbstractMessageInterfaceProxy implements MessageInterface
 {
@@ -25,17 +23,12 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
         $this->message = $message;
     }
 
-    /**
-     * @internal
-     */
     public function getBody()
     {
         return $this->message->getBody();
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      */
     public function getHeader($name)
@@ -44,8 +37,6 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      */
     public function getHeaderLine($name)
@@ -53,25 +44,17 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
         return $this->message->getHeaderLine($name);
     }
 
-    /**
-     * @internal
-     */
     public function getHeaders()
     {
         return $this->message->getHeaders();
     }
 
-    /**
-     * @internal
-     */
     public function getProtocolVersion()
     {
         return $this->message->getProtocolVersion();
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      */
     public function hasHeader($name)
@@ -80,8 +63,6 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
     }
 
     /**
-     * @internal
-     *
      * @param string               $name
      * @param array<string>|string $value
      */
@@ -90,17 +71,12 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
         return new static($this->message->withAddedHeader($name, $value));
     }
 
-    /**
-     * @internal
-     */
     public function withBody(StreamInterface $body)
     {
         return new static($this->message->withBody($body));
     }
 
     /**
-     * @internal
-     *
      * @param string               $name
      * @param array<string>|string $value
      */
@@ -110,8 +86,6 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
     }
 
     /**
-     * @internal
-     *
      * @param string $name
      */
     public function withoutHeader($name)
@@ -120,8 +94,6 @@ abstract class AbstractMessageInterfaceProxy implements MessageInterface
     }
 
     /**
-     * @internal
-     *
      * @param string $version
      */
     public function withProtocolVersion($version)
